@@ -17,12 +17,17 @@ class Case extends Sprite {
 	public var ligne:Int; 
 	public var couleur:UInt;
 	public var groupe:Int;
+	public var posx:Float;
+	public var posy:Float;
+	public var radius:Int;
 
 
-	public function new(x:Int, y:Int, color:UInt = 0x222222){
+	public function new(colonne:Int, ligne:Int, x:Float, y:Float, color:UInt = 0x222222){
 		super();
-		ligne = x;
-		colonne = y;
+		this.ligne = ligne;
+		this.colonne = colonne;
+		this.posx=x;
+		this.posy=y;
 		couleur=color;
 		groupe= 1;
 
@@ -31,6 +36,11 @@ class Case extends Sprite {
 	public function drawOneHexa(x:Float, y:Float, radius:Int):Void {
 		graphics.lineStyle(1, 0x000000);
 		graphics.beginFill(couleur);
+		this.radius = radius;
+		
+		// #if js
+		// 	js.Lib.alert(couleur);
+		// #end
 
 		for (i in 0...6)
 		{	
@@ -56,6 +66,8 @@ class Case extends Sprite {
     	}
 	}
 
-
+	public function deleteHexa(){
+		graphics.clear();
+	}
 
 }

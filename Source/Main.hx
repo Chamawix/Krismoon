@@ -10,6 +10,10 @@ import flash.display.Bitmap;
 import flash.display.BitmapData;
 import openfl.Assets;
 import motion.Actuate;
+import flash.events.Event;
+import flash.events.MouseEvent;
+import openfl.events.KeyboardEvent;
+import openfl.geom.ColorTransform;
 
 
 import openfl.display.Sprite;
@@ -29,6 +33,8 @@ class Main extends Sprite {
 	}
 	
 	private function init(){
+
+		stage.addEventListener(KeyboardEvent.KEY_UP, event_changeColor);
 		// this.debug = new ShapeDebug(stage.stageWidth, stage.stageHeight);
 		// debug.thickness = 10.0;
 
@@ -108,7 +114,7 @@ class Main extends Sprite {
 		// 		js.Lib.alert(mapx+"/"+mapy+"/"+w+"/"+h);
 		// #end
 
-		var radius = 45;
+		var radius = 20;
 		var xhexa:Float;
 		var yhexa:Float;
 
@@ -130,7 +136,7 @@ class Main extends Sprite {
 				// #if js
 				// js.Lib.alert(radius+"/"+xhexa+"/"+yhexa+"/"+i+"/"+j);
 				// #end
-				var hexa = new Case(i, j, 0xAA0000+j*1000+i*10000);
+				var hexa = new Case(i, j, xhexa, yhexa, 0xAA0000+j*1000+i*10000);
 
 				hexa.drawOneHexa(xhexa, yhexa, radius);
 
@@ -142,6 +148,23 @@ class Main extends Sprite {
 			}
 		}
 	 }
+	 private function event_changeColor(e:KeyboardEvent):Void {
+	 	var i = Std.int(Math.random()*NUM_ROWS);
+	 	var j = Std.int(Math.random()*NUM_COLUMNS);
+	 	
+	 	var hexa = hexas[i][j];
+
+	 	hexa.deleteHexa();
+	 	hexa.couleur= 0xFFFFFF+ Std.int(Math.random()*i*10000)+Std.int(Math.random()*j*100000);
+	 	hexa.drawOneHexa(hexa.posx, hexa.posy, hexa.radius );
+
+
+
+	 }
+
+
+
+
 	// private function drawOneHexa(x:Int, y:Int, radius:Int):Void {
 	// 	graphics.lineStyle(2, 0x000000);
 
