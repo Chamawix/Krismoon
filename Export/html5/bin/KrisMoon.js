@@ -62452,7 +62452,7 @@ zpp_$nape_space_ZPP_$Space.prototype = {
 						var miny = aabb.miny;
 						var maxx = aabb.maxx;
 						var maxy = aabb.maxy;
-						var count = angvel * dt * s.sweepCoef * 0.00833333333333333322 | 0;
+						var count = angvel * dt * s.sweepCoef * 0.0083333333333333332 | 0;
 						if(count > 8) count = 8;
 						var anginc = angvel * dt / count;
 						cur.sweepIntegrate(dt);
@@ -62514,7 +62514,7 @@ zpp_$nape_space_ZPP_$Space.prototype = {
 						var miny1 = aabb1.miny;
 						var maxx1 = aabb1.maxx;
 						var maxy1 = aabb1.maxy;
-						var count1 = angvel1 * dt * s1.sweepCoef * 0.00833333333333333322 | 0;
+						var count1 = angvel1 * dt * s1.sweepCoef * 0.0083333333333333332 | 0;
 						if(count1 > 8) count1 = 8;
 						var anginc1 = angvel1 * dt / count1;
 						cur1.sweepIntegrate(dt);
