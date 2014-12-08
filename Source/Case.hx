@@ -22,21 +22,20 @@ class Case extends Sprite {
 	public var radius:Int;
 
 
-	public function new(colonne:Int, ligne:Int, x:Float, y:Float, color:UInt = 0x222222){
+	public function new(colonne:Int, ligne:Int, x:Float, y:Float, color:UInt = 0x222222, rad:Int=20){
 		super();
 		this.ligne = ligne;
 		this.colonne = colonne;
 		this.posx=x;
 		this.posy=y;
 		couleur=color;
-		groupe= 1;
+		radius=rad;
 
 	}
 
-	public function drawOneHexa(x:Float, y:Float, radius:Int):Void {
+	public function drawOneHexa():Void {
 		graphics.lineStyle(1, 0x000000);
 		graphics.beginFill(couleur);
-		this.radius = radius;
 		
 		// #if js
 		// 	js.Lib.alert(couleur);
@@ -47,9 +46,9 @@ class Case extends Sprite {
 			
 			//graphics.lineStyle( 2,  0x123456);
 		    var angle = 2 * Math.PI / 6 * (i + 0.5);
-		    var x_i = x + radius * Math.cos(angle);
+		    var x_i = posx + radius * Math.cos(angle);
 
-		    var y_i = y + radius * Math.sin(angle);
+		    var y_i = posy + radius * Math.sin(angle);
 		   
 		    
 
@@ -64,6 +63,13 @@ class Case extends Sprite {
 		    }
 
     	}
+	}
+
+	public function updateHexa(color:UInt){
+		graphics.clear();
+		couleur=color;
+		drawOneHexa();
+
 	}
 
 	public function deleteHexa(){

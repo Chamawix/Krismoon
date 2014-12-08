@@ -11,7 +11,7 @@ import flash.display.Shape;
 
 
 
-class Faction {
+class Faction{
 
 	private var nom:String;
 	private var territoire:Array<>;

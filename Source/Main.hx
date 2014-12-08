@@ -20,8 +20,8 @@ import openfl.display.Sprite;
 
 class Main extends Sprite {
 
-	private static var NUM_COLUMNS = 10;
-	private static var NUM_ROWS = 10;
+	public static var NUM_COLUMNS = 10;
+	public static var NUM_ROWS = 10;
 	private var hexas= new Array <Array <Case>> ();
 
 	private var space = new Space();
@@ -106,6 +106,7 @@ class Main extends Sprite {
 
 		drawHexagones(NUM_ROWS, NUM_COLUMNS, Std.int(stage.stageWidth-100),Std.int(stage.stageHeight-100));
 
+		hexas[0][0].updateHexa(0xEE2222);
 	}
 
 	private function drawHexagones(mapx:Int, mapy:Int, w:Int, h:Int):Void 
@@ -136,9 +137,9 @@ class Main extends Sprite {
 				// #if js
 				// js.Lib.alert(radius+"/"+xhexa+"/"+yhexa+"/"+i+"/"+j);
 				// #end
-				var hexa = new Case(i, j, xhexa, yhexa, 0xAA0000+j*1000+i*10000);
+				var hexa = new Case(i, j, xhexa, yhexa, 0xAA0000+j*1000+i*10000, radius);
 
-				hexa.drawOneHexa(xhexa, yhexa, radius);
+				hexa.drawOneHexa();
 
 				addChild(hexa);
 
@@ -154,11 +155,7 @@ class Main extends Sprite {
 	 	
 	 	var hexa = hexas[i][j];
 
-	 	hexa.deleteHexa();
-	 	hexa.couleur= 0xFFFFFF+ Std.int(Math.random()*i*10000)+Std.int(Math.random()*j*100000);
-	 	hexa.drawOneHexa(hexa.posx, hexa.posy, hexa.radius );
-
-
+	 	hexa.updateHexa( Std.int(0xEEFFFF *Math.random()));
 
 	 }
 
