@@ -1,3 +1,5 @@
+package ;
+
 import nape.shape.Polygon;
 import flash.Lib;
 import nape.geom.Vec2;
@@ -20,9 +22,12 @@ import openfl.display.Sprite;
 
 class Main extends Sprite {
 
-	public static var NUM_COLUMNS = 10;
-	public static var NUM_ROWS = 10;
+	public static var NUM_COLUMNS = 12;
+	public static var NUM_ROWS = 12;
+	public static var factionNeutre = new Faction("Neutre", 0, 0, 0xAAAAAA);
+	public static var regions= new Array <Array <Region>> ();
 	private var hexas= new Array <Array <Case>> ();
+	private var factions= new Array <Faction> ();
 
 	private var space = new Space();
 	private var debug:ShapeDebug;
@@ -35,82 +40,53 @@ class Main extends Sprite {
 	private function init(){
 
 		stage.addEventListener(KeyboardEvent.KEY_UP, event_changeColor);
-		// this.debug = new ShapeDebug(stage.stageWidth, stage.stageHeight);
-		// debug.thickness = 10.0;
 
-		// addChild(this.debug.display);
-
-		// var hexagon = new Body(BodyType.STATIC);
-		// hexagon.shapes.add(new Polygon(Polygon.regular(90, 90, 6, 90.0)));
-		// hexagon.position.setxy(210, 100);
-		// hexagon.space = this.space;
-
-		// this.debug.draw(space);
-		//graphics.beginFill(0x3567EE);
-		//drawHexagones(40,40,Std.int(stage.width), stage.height);
-		//drawOneHexa(100, 100, 20);
-			// var pentagonBody = new Body();
-		// pentagonBody.position.setxy(Math.random() * 300, Math.random() * 300);
-		// var pentagonShape = new Polygon(Polygon.regular(25, 25, 6));
-
-
-		// pentagonShape.body = pentagonBody;
-		// pentagonBody.space = this.space;
-		// //var hexagon = new DisplayObject(pentagonShape);
-
-		// Lib.current.stage.addChild(pentagonShape);
-		
-		// var map = {x: 40, y: 40};
-		// graphics.beginFill(0x556677,1);
-
-
-		// var width =  Std.int(stage.stageWidth / map.x);
-		// var height = Std.int(stage.stageHeight / map.y);
-
-		// for (i in 0...width){
-		// for (j in 0...height){
-		// 		graphics.drawRect(i*map.x +1, j*map.y +1, map.x-2, map.y-2);
-		// 	}
-		// }
-
-
-		// var bitmap = new Bitmap(Assets.getBitmapData("assets/persoTest.jpg"));
-		// addChild(bitmap);
-
-
-		// bitmap.x = 1*width + Std.int(bitmap.width/4);
-		// bitmap.y = 2*height + Std.int(bitmap.height/4);
-
-		// var bitmapData = Assets.getBitmapData ("assets/persoTest.jpg");
-
-
-		// //Déplace l'image avec un ease definissable (vitesse au début, à la fin), de sa position initiale, vers  la position en x, y, en 2 sec
-		// Actuate.tween(bitmap,5, {alpha:0.5, x: 10*map.x + Std.int(bitmap.width/4), y: 8*map.y + Std.int(bitmap.height/4)});
-		// //(Image a bouger, durée, {Nouveau paramètre d'arrivé : alpha, x, y, etc..})
 		// #if js
 		// 		js.Lib.alert(stage.stageWidth+"/"+stage.stageHeight );
 		// #end
 
+		// Initialisation des factions :
+		factions.push(new Faction("Mort-vivant", 9, 1, 0x111111));
+		factions.push(new Faction("Justicar", 5, 5, 0x882222));
+		factions.push(new Faction("Bezergner", 8, 2, 0xCC4444));
+		factions.push(new Faction("Morticor", 3, 7, 0x1122BB));
+		factions.push(new Faction ("Envirald", 1, 9, 0x22BB11));
+		// #if js
+		// 	js.Lib.alert(factions[1].couleur);
+		// #end
+
+		// Initialisation des régions
 		
 		for (row in 0...NUM_ROWS) {
 			
-			hexas[row] = new Array <Case> ();
+			regions[row] = new Array <Region> ();
+			hexas[row]= new Array <Case> ();
 			
 			for (column in 0...NUM_COLUMNS) {
 				
+				regions[row][column] = null;
 				hexas[row][column] = null;
+
+
+				// #if js
+				// 	js.Lib.alert(row+column);
+				// #end
 				
 			}
 			
 		}
 
-		drawHexagones(NUM_ROWS, NUM_COLUMNS, Std.int(stage.stageWidth-100),Std.int(stage.stageHeight-100));
+		drawMap(NUM_ROWS, NUM_COLUMNS, Std.int(stage.stageWidth-100),Std.int(stage.stageHeight-100));
+		
 
-		hexas[0][0].updateHexa(0xEE2222);
+		// #if js
+		// 	js.Lib.alert(region);
+		// #end
+
+		//regions[0][0].changement_Faction(factions[3]);
 	}
 
-	private function drawHexagones(mapx:Int, mapy:Int, w:Int, h:Int):Void 
-	{
+	private function drawMap(mapx:Int, mapy:Int, w:Int, h:Int):Void {
 		// #if js
 		// 		js.Lib.alert(mapx+"/"+mapy+"/"+w+"/"+h);
 		// #end
@@ -122,8 +98,8 @@ class Main extends Sprite {
 		// #if js
 		// 		js.Lib.alert(radius);
 		// #end
-		for (i in 0...mapx){
-			for (j in 0...mapy){
+		for (i in 0...mapy){
+			for (j in 0...mapx){
 				if(j%2 == 0){
 				xhexa = i*radius*2*Math.sqrt(3)/2+radius*2;
 				yhexa = j*radius*2*3/4+radius*2;
@@ -134,28 +110,60 @@ class Main extends Sprite {
 				yhexa = j*radius*2*3/4+radius*2;
 			}
 
-				// #if js
-				// js.Lib.alert(radius+"/"+xhexa+"/"+yhexa+"/"+i+"/"+j);
-				// #end
-				var hexa = new Case(i, j, xhexa, yhexa, 0xAA0000+j*1000+i*10000, radius);
+				var colonne=i;
+				var ligne=j;
+
+				var hexa = new Case(colonne, ligne, xhexa, yhexa, 0xAA0000+j*1000+i*10000, radius);
 
 				hexa.drawOneHexa();
 
+				//Ajoute au stage l'hexagone -> Devient graphique.
 				addChild(hexa);
 
+				//Sauvegarde en mémoire le child du stage. 
 				hexas[i][j]= hexa;
+				var region:Region;
 
-				
+
+
+				if (i== 0 && j==0) {
+
+					region = new Region (hexa,factions[0]);
+				}
+				else if(i == 5 && j == 4)
+					region = new Region (hexa,factions[1]);
+				else if (i == 7 && j== 5)
+					region = new Region (hexa,factions[2]);
+				else if (i == 2 && j== 7)
+					region = new Region (hexa,factions[3]);
+				else if (i == 9 && j== 8)
+					region = new Region (hexa,factions[4]);
+				else{ 
+					region = new Region (hexa,factionNeutre);
+				}
+
+			// #if js
+			// js.Lib.alert(region);
+			// #end 
+
+			regions[i][j] = region;
+
 			}
+
+			// #if js
+			// 	js.Lib.alert(regions[0][0].appartenance.couleur);
+			// #end
+
+
 		}
 	 }
-	 private function event_changeColor(e:KeyboardEvent):Void {
-	 	var i = Std.int(Math.random()*NUM_ROWS);
-	 	var j = Std.int(Math.random()*NUM_COLUMNS);
-	 	
-	 	var hexa = hexas[i][j];
 
-	 	hexa.updateHexa( Std.int(0xEEFFFF *Math.random()));
+	 private function event_changeColor(e:KeyboardEvent):Void {
+	 	
+	 	for (faction in factions)
+	 	{
+	 		faction.attaque();
+	 	}
 
 	 }
 
