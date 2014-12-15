@@ -880,8 +880,43 @@ openfl_display_Sprite.prototype = $extend(openfl_display_DisplayObjectContainer.
 	,__class__: openfl_display_Sprite
 	,__properties__: $extend(openfl_display_DisplayObjectContainer.prototype.__properties__,{get_graphics:"get_graphics"})
 });
+var Faction = function(nom,puissanceAttaque,puissanceDefense,couleur) {
+	this.territoire = new Array();
+	this.nom = nom;
+	this.puissanceAttaque = puissanceAttaque;
+	this.puissanceDefense = puissanceDefense;
+	this.couleur = couleur;
+};
+$hxClasses["Faction"] = Faction;
+Faction.__name__ = ["Faction"];
+Faction.prototype = {
+	attaque: function() {
+		var atqDone = false;
+		var l = this.territoire.length;
+		var count = 0;
+		while(!atqDone) {
+			count++;
+			var i = Std["int"](Math.random() * this.territoire.length);
+			this.territoire[i].typeVoisins();
+			if(this.territoire[i].getEnnemie().length == 0 && count > 225) break;
+			if(this.territoire[i].getEnnemie().length == 0) continue;
+			var atq = this.territoire[i].getEnnemie();
+			var indice = Std["int"](atq.length * Math.random());
+			this.territoire[i].attaqueZone(atq[indice]);
+			atqDone = true;
+		}
+	}
+	,ajoutTerritoire: function(region) {
+		this.territoire.push(region);
+	}
+	,retraitTerritoire: function(region) {
+		HxOverrides.remove(this.territoire,region);
+	}
+	,__class__: Faction
+};
 var Main = function() {
 	this.space = new nape_space_Space();
+	this.factions = new Array();
 	this.hexas = new Array();
 	openfl_display_Sprite.call(this);
 	this.init();
@@ -892,29 +927,36 @@ Main.__super__ = openfl_display_Sprite;
 Main.prototype = $extend(openfl_display_Sprite.prototype,{
 	init: function() {
 		this.stage.addEventListener(openfl_events_KeyboardEvent.KEY_UP,$bind(this,this.event_changeColor));
+		this.factions.push(new Faction("Mort-vivant",9,1,1118481));
+		this.factions.push(new Faction("Justicar",5,5,8921634));
+		this.factions.push(new Faction("Bezergner",8,2,13386820));
+		this.factions.push(new Faction("Morticor",3,7,1123003));
+		this.factions.push(new Faction("Envirald",1,9,2276113));
 		var _g1 = 0;
 		var _g = Main.NUM_ROWS;
 		while(_g1 < _g) {
 			var row = _g1++;
+			Main.regions[row] = new Array();
 			this.hexas[row] = new Array();
 			var _g3 = 0;
 			var _g2 = Main.NUM_COLUMNS;
 			while(_g3 < _g2) {
 				var column = _g3++;
+				Main.regions[row][column] = null;
 				this.hexas[row][column] = null;
 			}
 		}
-		this.drawHexagones(Main.NUM_ROWS,Main.NUM_COLUMNS,this.stage.stageWidth - 100 | 0,this.stage.stageHeight - 100 | 0);
+		this.drawMap(Main.NUM_ROWS,Main.NUM_COLUMNS,this.stage.stageWidth - 100 | 0,this.stage.stageHeight - 100 | 0);
 	}
-	,drawHexagones: function(mapx,mapy,w,h) {
+	,drawMap: function(mapx,mapy,w,h) {
 		var radius = 20;
 		var xhexa;
 		var yhexa;
 		var _g = 0;
-		while(_g < mapx) {
+		while(_g < mapy) {
 			var i = _g++;
 			var _g1 = 0;
-			while(_g1 < mapy) {
+			while(_g1 < mapx) {
 				var j = _g1++;
 				if(j % 2 == 0) {
 					xhexa = i * radius * 2 * Math.sqrt(3) / 2 + radius * 2;
@@ -923,20 +965,26 @@ Main.prototype = $extend(openfl_display_Sprite.prototype,{
 					xhexa = i * radius * 2 * Math.sqrt(3) / 2 + radius * 2 + radius - 2 * radius / 15;
 					yhexa = j * radius * 2 * 3 / 4 + radius * 2;
 				}
-				var hexa = new Case(i,j,xhexa,yhexa,11141120 + j * 1000 + i * 10000);
-				hexa.drawOneHexa(xhexa,yhexa,radius);
+				var colonne = i;
+				var ligne = j;
+				var hexa = new Case(colonne,ligne,xhexa,yhexa,11141120 + j * 1000 + i * 10000,radius);
+				hexa.drawOneHexa();
 				this.addChild(hexa);
 				this.hexas[i][j] = hexa;
+				var region;
+				if(i == 0 && j == 0) region = new Region(hexa,this.factions[0]); else if(i == 5 && j == 4) region = new Region(hexa,this.factions[1]); else if(i == 7 && j == 5) region = new Region(hexa,this.factions[2]); else if(i == 2 && j == 7) region = new Region(hexa,this.factions[3]); else if(i == 9 && j == 8) region = new Region(hexa,this.factions[4]); else region = new Region(hexa,Main.factionNeutre);
+				Main.regions[i][j] = region;
 			}
 		}
 	}
 	,event_changeColor: function(e) {
-		var i = Std["int"](Math.random() * Main.NUM_ROWS);
-		var j = Std["int"](Math.random() * Main.NUM_COLUMNS);
-		var hexa = this.hexas[i][j];
-		hexa.deleteHexa();
-		hexa.couleur = 16777215 + Std["int"](Math.random() * i * 10000) + Std["int"](Math.random() * j * 100000);
-		hexa.drawOneHexa(hexa.posx,hexa.posy,hexa.radius);
+		var _g = 0;
+		var _g1 = this.factions;
+		while(_g < _g1.length) {
+			var faction = _g1[_g];
+			++_g;
+			faction.attaque();
+		}
 	}
 	,__class__: Main
 });
@@ -951,7 +999,8 @@ DocumentClass.__super__ = Main;
 DocumentClass.prototype = $extend(Main.prototype,{
 	__class__: DocumentClass
 });
-var Case = function(colonne,ligne,x,y,color) {
+var Case = function(colonne,ligne,x,y,color,rad) {
+	if(rad == null) rad = 20;
 	if(color == null) color = 2236962;
 	openfl_display_Sprite.call(this);
 	this.ligne = ligne;
@@ -959,24 +1008,28 @@ var Case = function(colonne,ligne,x,y,color) {
 	this.posx = x;
 	this.posy = y;
 	this.couleur = color;
-	this.groupe = 1;
+	this.radius = rad;
 };
 $hxClasses["Case"] = Case;
 Case.__name__ = ["Case"];
 Case.__super__ = openfl_display_Sprite;
 Case.prototype = $extend(openfl_display_Sprite.prototype,{
-	drawOneHexa: function(x,y,radius) {
+	drawOneHexa: function() {
 		this.get_graphics().lineStyle(1,0);
 		this.get_graphics().beginFill(this.couleur);
-		this.radius = radius;
 		var _g = 0;
 		while(_g < 6) {
 			var i = _g++;
 			var angle = 2 * Math.PI / 6 * (i + 0.5);
-			var x_i = x + radius * Math.cos(angle);
-			var y_i = y + radius * Math.sin(angle);
+			var x_i = this.posx + this.radius * Math.cos(angle);
+			var y_i = this.posy + this.radius * Math.sin(angle);
 			if(i == 0) this.get_graphics().moveTo(x_i | 0,y_i | 0); else this.get_graphics().lineTo(x_i | 0,y_i | 0);
 		}
+	}
+	,updateHexa: function(color) {
+		this.get_graphics().clear();
+		this.couleur = color;
+		this.drawOneHexa();
 	}
 	,deleteHexa: function() {
 		this.get_graphics().clear();
@@ -1314,6 +1367,141 @@ Reflect.makeVarArgs = function(f) {
 		return f(a);
 	};
 };
+var Region = function(h,nouvelleFaction) {
+	this.regionEnnemie = new Array();
+	this.regionAllie = new Array();
+	this.hexa = h;
+	this.faction = nouvelleFaction;
+	this.hexa.updateHexa(this.faction.couleur);
+	this.faction.ajoutTerritoire(this);
+	this.listeVoisins = this.voisins();
+};
+$hxClasses["Region"] = Region;
+Region.__name__ = ["Region"];
+Region.prototype = {
+	changement_Faction: function(nouvelleFaction) {
+		this.faction.retraitTerritoire(this);
+		this.faction = nouvelleFaction;
+		this.hexa.updateHexa(this.faction.couleur);
+		this.faction.ajoutTerritoire(this);
+		this.typeVoisins();
+	}
+	,voisins: function() {
+		var result = new haxe_ds_StringMap();
+		var p_x = this.hexa.ligne;
+		var p_y = this.hexa.colonne;
+		var q;
+		var r;
+		if(this.hexa.colonne == 8) {
+		}
+		if(this.hexa.ligne % 2 == 0) {
+			var _g = 0;
+			while(_g < 6) {
+				var i = _g++;
+				switch(i) {
+				case 0:
+					q = this.hexa.colonne - 1;
+					r = this.hexa.ligne;
+					if(q >= 0) result.set("O",{ x : q, y : r});
+					break;
+				case 1:
+					q = this.hexa.colonne - 1;
+					r = this.hexa.ligne - 1;
+					if(q >= 0 && r >= 0) result.set("NO",{ x : q, y : r});
+					break;
+				case 2:
+					q = this.hexa.colonne;
+					r = this.hexa.ligne - 1;
+					if(r >= 0) result.set("NE",{ x : q, y : r});
+					break;
+				case 3:
+					q = this.hexa.colonne + 1;
+					r = this.hexa.ligne;
+					if(q < Main.NUM_COLUMNS) result.set("E",{ x : q, y : r});
+					break;
+				case 4:
+					q = this.hexa.colonne;
+					r = this.hexa.ligne + 1;
+					if(r < Main.NUM_ROWS) result.set("SE",{ x : q, y : r});
+					break;
+				case 5:
+					q = this.hexa.colonne - 1;
+					r = this.hexa.ligne + 1;
+					if(q >= 0 && r < Main.NUM_ROWS) result.set("SO",{ x : q, y : r});
+					break;
+				}
+			}
+		} else {
+			var _g1 = 0;
+			while(_g1 < 6) {
+				var j = _g1++;
+				switch(j) {
+				case 0:
+					q = this.hexa.colonne - 1;
+					r = this.hexa.ligne;
+					if(q >= 0) result.set("O",{ x : q, y : r});
+					break;
+				case 1:
+					q = this.hexa.colonne;
+					r = this.hexa.ligne - 1;
+					if(r >= 0) result.set("NO",{ x : q, y : r});
+					break;
+				case 2:
+					q = this.hexa.colonne + 1;
+					r = this.hexa.ligne - 1;
+					if(r >= 0 && q < Main.NUM_COLUMNS) result.set("NE",{ x : q, y : r});
+					break;
+				case 3:
+					q = this.hexa.colonne + 1;
+					r = this.hexa.ligne;
+					if(q < Main.NUM_COLUMNS) result.set("E",{ x : q, y : r});
+					break;
+				case 4:
+					q = this.hexa.colonne + 1;
+					r = this.hexa.ligne + 1;
+					if(r < Main.NUM_ROWS && q < Main.NUM_COLUMNS) result.set("SE",{ x : q, y : r});
+					break;
+				case 5:
+					q = this.hexa.colonne;
+					r = this.hexa.ligne + 1;
+					if(r < Main.NUM_ROWS) result.set("SO",{ x : q, y : r});
+					break;
+				}
+			}
+		}
+		return result;
+	}
+	,getVoisins: function() {
+		js_Lib.alert(Std.string(this.listeVoisins) + "\n Voisins alliés" + Std.string(this.regionAllie) + "\n Voisins Ennemies" + Std.string(this.regionEnnemie));
+	}
+	,getFaction: function() {
+		return this.faction;
+	}
+	,typeVoisins: function() {
+		var iter = this.listeVoisins.keys();
+		while( iter.hasNext() ) {
+			var voisin = iter.next();
+			if(this.faction == Main.regions[this.listeVoisins.get(voisin).x][this.listeVoisins.get(voisin).y].getFaction()) {
+				if(HxOverrides.indexOf(this.regionAllie,"" + voisin,0) == -1) this.regionAllie.push("" + voisin);
+				if(HxOverrides.indexOf(this.regionEnnemie,"" + voisin,0) != -1) HxOverrides.remove(this.regionEnnemie,"" + voisin);
+			} else {
+				if(HxOverrides.indexOf(this.regionEnnemie,"" + voisin,0) == -1) this.regionEnnemie.push("" + voisin);
+				if(HxOverrides.indexOf(this.regionAllie,"" + voisin,0) != -1) HxOverrides.remove(this.regionAllie,"" + voisin);
+			}
+		}
+	}
+	,getEnnemie: function() {
+		return this.regionEnnemie;
+	}
+	,getAllie: function() {
+		return this.regionAllie;
+	}
+	,attaqueZone: function(orientation) {
+		var p = this.listeVoisins.get(orientation);
+		if(Main.regions[p.x][p.y].getFaction().nom == "Neutre") Main.regions[p.x][p.y].changement_Faction(this.faction);
+	}
+	,__class__: Region
+};
 var Std = function() { };
 $hxClasses["Std"] = Std;
 Std.__name__ = ["Std"];
@@ -1335,7 +1523,10 @@ var StringBuf = function() {
 $hxClasses["StringBuf"] = StringBuf;
 StringBuf.__name__ = ["StringBuf"];
 StringBuf.prototype = {
-	__class__: StringBuf
+	add: function(x) {
+		this.b += Std.string(x);
+	}
+	,__class__: StringBuf
 };
 var StringTools = function() { };
 $hxClasses["StringTools"] = StringTools;
@@ -1818,6 +2009,20 @@ haxe_ds_StringMap.prototype = {
 			return this.ref["$" + i];
 		}};
 	}
+	,toString: function() {
+		var s = new StringBuf();
+		s.b += "{";
+		var it = this.keys();
+		while( it.hasNext() ) {
+			var i = it.next();
+			if(i == null) s.b += "null"; else s.b += "" + i;
+			s.b += " => ";
+			s.add(Std.string(this.get(i)));
+			if(it.hasNext()) s.b += ", ";
+		}
+		s.b += "}";
+		return s.b;
+	}
 	,__class__: haxe_ds_StringMap
 };
 var haxe_ds__$Vector_Vector_$Impl_$ = function() { };
@@ -2135,6 +2340,12 @@ js_Boot.__isNativeObj = function(o) {
 };
 js_Boot.__resolveNativeClass = function(name) {
 	if(typeof window != "undefined") return window[name]; else return global[name];
+};
+var js_Lib = function() { };
+$hxClasses["js.Lib"] = js_Lib;
+js_Lib.__name__ = ["js","Lib"];
+js_Lib.alert = function(v) {
+	alert(js_Boot.__string_rec(v,""));
 };
 var lime_AssetCache = function() {
 	this.enabled = true;
@@ -62452,7 +62663,7 @@ zpp_$nape_space_ZPP_$Space.prototype = {
 						var miny = aabb.miny;
 						var maxx = aabb.maxx;
 						var maxy = aabb.maxy;
-						var count = angvel * dt * s.sweepCoef * 0.00833333333333333322 | 0;
+						var count = angvel * dt * s.sweepCoef * 0.0083333333333333332 | 0;
 						if(count > 8) count = 8;
 						var anginc = angvel * dt / count;
 						cur.sweepIntegrate(dt);
@@ -62514,7 +62725,7 @@ zpp_$nape_space_ZPP_$Space.prototype = {
 						var miny1 = aabb1.miny;
 						var maxx1 = aabb1.maxx;
 						var maxy1 = aabb1.maxy;
-						var count1 = angvel1 * dt * s1.sweepCoef * 0.00833333333333333322 | 0;
+						var count1 = angvel1 * dt * s1.sweepCoef * 0.0083333333333333332 | 0;
 						if(count1 > 8) count1 = 8;
 						var anginc1 = angvel1 * dt / count1;
 						cur1.sweepIntegrate(dt);
@@ -77504,8 +77715,10 @@ if(window.createjs != null) createjs.Sound.alternateExtensions = ["ogg","mp3","w
 openfl_display_DisplayObject.__instanceCount = 0;
 openfl_display_DisplayObject.__worldRenderDirty = 0;
 openfl_display_DisplayObject.__worldTransformDirty = 0;
-Main.NUM_COLUMNS = 10;
-Main.NUM_ROWS = 10;
+Main.NUM_COLUMNS = 12;
+Main.NUM_ROWS = 12;
+Main.factionNeutre = new Faction("Neutre",0,0,11184810);
+Main.regions = new Array();
 haxe_ds_ObjectMap.count = 0;
 js_Boot.__toStr = {}.toString;
 lime_Assets.cache = new lime_AssetCache();
