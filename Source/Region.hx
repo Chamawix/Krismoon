@@ -208,29 +208,21 @@ class Region {
 	}
 
 	public function typeVoisins():Void {
-		
 		var iter = listeVoisins.keys();
-
 		for (voisin in iter){
-
 			if (faction == Main.regions[listeVoisins.get(voisin).x][listeVoisins.get(voisin).y].getFaction()){
 				if(regionAllie.indexOf(""+voisin) == -1 )
 					regionAllie.push(""+voisin);
 				if(regionEnnemie.indexOf(""+voisin) != -1)
 					regionEnnemie.remove(""+voisin);
 			}
-
 			else {
-				
-				
 				if (regionEnnemie.indexOf(""+voisin) == -1)
 					regionEnnemie.push(""+voisin);
 
 				if (regionAllie.indexOf(""+voisin)!= -1)
 					regionAllie.remove(""+voisin);
 			}
-
-
 		}
 
 	}
@@ -245,12 +237,12 @@ class Region {
 
 	public function attaqueZone( orientation:String){
 		var p = listeVoisins.get(orientation);
+		
 		if(Main.regions[p.x][p.y].getFaction().nom == "Neutre")
 		Main.regions[p.x][p.y].changement_Faction(faction);
 		// #if js
 		// 	js.Lib.alert(orientation+"\n"+ p + "\n" + this.hexa.ligne +"/"+this.hexa.colonne);
 		// #end
-		
 		}
 
 }

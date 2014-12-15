@@ -26,9 +26,7 @@ class Main extends Sprite {
 	public static var NUM_ROWS = 12;
 	public static var factionNeutre = new Faction("Neutre", 0, 0, 0xAAAAAA);
 	public static var regions= new Array <Array <Region>> ();
-	private var hexas= new Array <Array <Case>> ();
 	private var factions= new Array <Faction> ();
-
 	private var space = new Space();
 	private var debug:ShapeDebug;
 
@@ -47,10 +45,10 @@ class Main extends Sprite {
 
 		// Initialisation des factions :
 		factions.push(new Faction("Mort-vivant", 9, 1, 0x111111));
-		factions.push(new Faction("Justicar", 5, 5, 0x882222));
+		factions.push(new Faction("Justicar", 5, 5, 0xDDDD22));
 		factions.push(new Faction("Bezergner", 8, 2, 0xCC4444));
 		factions.push(new Faction("Morticor", 3, 7, 0x1122BB));
-		factions.push(new Faction ("Envirald", 1, 9, 0x22BB11));
+		factions.push(new Faction ("Envirald", 1, 9, 0x00AA00));
 		// #if js
 		// 	js.Lib.alert(factions[1].couleur);
 		// #end
@@ -60,12 +58,12 @@ class Main extends Sprite {
 		for (row in 0...NUM_ROWS) {
 			
 			regions[row] = new Array <Region> ();
-			hexas[row]= new Array <Case> ();
+			//hexas[row]= new Array <Case> ();
 			
 			for (column in 0...NUM_COLUMNS) {
 				
 				regions[row][column] = null;
-				hexas[row][column] = null;
+				//hexas[row][column] = null;
 
 
 				// #if js
@@ -121,7 +119,6 @@ class Main extends Sprite {
 				addChild(hexa);
 
 				//Sauvegarde en mémoire le child du stage. 
-				hexas[i][j]= hexa;
 				var region:Region;
 
 
@@ -141,20 +138,14 @@ class Main extends Sprite {
 				else{ 
 					region = new Region (hexa,factionNeutre);
 				}
-
 			// #if js
 			// js.Lib.alert(region);
 			// #end 
-
 			regions[i][j] = region;
-
 			}
-
 			// #if js
 			// 	js.Lib.alert(regions[0][0].appartenance.couleur);
 			// #end
-
-
 		}
 	 }
 

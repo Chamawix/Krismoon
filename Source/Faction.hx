@@ -16,6 +16,7 @@ class Faction{
 	public var nom:String;
 	private var territoire = new Array <Region> ();
 	//private var ia:Ia; Pour plus tard
+	private var frontiere = new Array <Region> ();
 	private var puissanceAttaque:Int;
 	private var puissanceDefense: Int;
 	public var couleur: UInt;
@@ -44,7 +45,7 @@ class Faction{
 		var count=0;
 		
 		while (!atqDone){
-
+			//
 			count++;
 
 			var i = Std.int(Math.random()*territoire.length);
