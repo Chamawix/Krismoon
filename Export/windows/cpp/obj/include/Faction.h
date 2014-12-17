@@ -33,6 +33,7 @@ class HXCPP_CLASS_ATTRIBUTES  Faction_obj : public hx::Object{
 
 		::String nom;
 		Array< ::Dynamic > territoire;
+		Array< ::Dynamic > frontiere;
 		int puissanceAttaque;
 		int puissanceDefense;
 		int couleur;

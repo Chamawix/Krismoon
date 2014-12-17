@@ -4407,11 +4407,6 @@
    <depend name="include/Main.h"/>
    <depend name="include/Region.h"/>
    <depend name="include/Std.h"/>
-   <depend name="include/nape/geom/Vec2.h"/>
-   <depend name="include/nape/space/Broadphase.h"/>
-   <depend name="include/nape/space/Space.h"/>
-   <depend name="include/nape/util/Debug.h"/>
-   <depend name="include/nape/util/ShapeDebug.h"/>
    <depend name="include/openfl/_v2/display/DisplayObject.h"/>
    <depend name="include/openfl/_v2/display/DisplayObjectContainer.h"/>
    <depend name="include/openfl/_v2/display/IBitmapDrawable.h"/>

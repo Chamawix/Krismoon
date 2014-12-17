@@ -474,44 +474,44 @@ Void Region_obj::typeVoisins( ){
 {
 		HX_STACK_FRAME("Region","typeVoisins",0x3dc5df77,"Region.typeVoisins","Region.hx",210,0x0b29722a)
 		HX_STACK_THIS(this)
-		HX_STACK_LINE(212)
+		HX_STACK_LINE(211)
 		Dynamic iter = this->listeVoisins->keys();		HX_STACK_VAR(iter,"iter");
-		HX_STACK_LINE(214)
+		HX_STACK_LINE(212)
 		for(::cpp::FastIterator_obj< ::String > *__it = ::cpp::CreateFastIterator< ::String >(iter);  __it->hasNext(); ){
 			::String voisin = __it->next();
 			{
-				HX_STACK_LINE(216)
+				HX_STACK_LINE(213)
 				::Faction _g = ::Main_obj::regions->__get(this->listeVoisins->get(voisin)->__Field(HX_CSTRING("x"),true)).StaticCast< Array< ::Dynamic > >()->__get(this->listeVoisins->get(voisin)->__Field(HX_CSTRING("y"),true)).StaticCast< ::Region >()->getFaction();		HX_STACK_VAR(_g,"_g");
-				HX_STACK_LINE(216)
+				HX_STACK_LINE(213)
 				if (((this->faction == _g))){
-					HX_STACK_LINE(217)
+					HX_STACK_LINE(214)
 					int _g1 = this->regionAllie->indexOf((HX_CSTRING("") + voisin),null());		HX_STACK_VAR(_g1,"_g1");
-					HX_STACK_LINE(217)
+					HX_STACK_LINE(214)
 					if (((_g1 == (int)-1))){
-						HX_STACK_LINE(218)
+						HX_STACK_LINE(215)
 						this->regionAllie->push((HX_CSTRING("") + voisin));
 					}
-					HX_STACK_LINE(219)
+					HX_STACK_LINE(216)
 					int _g2 = this->regionEnnemie->indexOf((HX_CSTRING("") + voisin),null());		HX_STACK_VAR(_g2,"_g2");
-					HX_STACK_LINE(219)
+					HX_STACK_LINE(216)
 					if (((_g2 != (int)-1))){
-						HX_STACK_LINE(220)
+						HX_STACK_LINE(217)
 						this->regionEnnemie->remove((HX_CSTRING("") + voisin));
 					}
 				}
 				else{
-					HX_STACK_LINE(226)
+					HX_STACK_LINE(220)
 					int _g3 = this->regionEnnemie->indexOf((HX_CSTRING("") + voisin),null());		HX_STACK_VAR(_g3,"_g3");
-					HX_STACK_LINE(226)
+					HX_STACK_LINE(220)
 					if (((_g3 == (int)-1))){
-						HX_STACK_LINE(227)
+						HX_STACK_LINE(221)
 						this->regionEnnemie->push((HX_CSTRING("") + voisin));
 					}
-					HX_STACK_LINE(229)
+					HX_STACK_LINE(223)
 					int _g4 = this->regionAllie->indexOf((HX_CSTRING("") + voisin),null());		HX_STACK_VAR(_g4,"_g4");
-					HX_STACK_LINE(229)
+					HX_STACK_LINE(223)
 					if (((_g4 != (int)-1))){
-						HX_STACK_LINE(230)
+						HX_STACK_LINE(224)
 						this->regionAllie->remove((HX_CSTRING("") + voisin));
 					}
 				}
@@ -526,9 +526,9 @@ return null();
 HX_DEFINE_DYNAMIC_FUNC0(Region_obj,typeVoisins,(void))
 
 Array< ::String > Region_obj::getEnnemie( ){
-	HX_STACK_FRAME("Region","getEnnemie",0x44e13fcd,"Region.getEnnemie","Region.hx",240,0x0b29722a)
+	HX_STACK_FRAME("Region","getEnnemie",0x44e13fcd,"Region.getEnnemie","Region.hx",232,0x0b29722a)
 	HX_STACK_THIS(this)
-	HX_STACK_LINE(240)
+	HX_STACK_LINE(232)
 	return this->regionEnnemie;
 }
 
@@ -536,9 +536,9 @@ Array< ::String > Region_obj::getEnnemie( ){
 HX_DEFINE_DYNAMIC_FUNC0(Region_obj,getEnnemie,return )
 
 Array< ::String > Region_obj::getAllie( ){
-	HX_STACK_FRAME("Region","getAllie",0x782d1561,"Region.getAllie","Region.hx",243,0x0b29722a)
+	HX_STACK_FRAME("Region","getAllie",0x782d1561,"Region.getAllie","Region.hx",235,0x0b29722a)
 	HX_STACK_THIS(this)
-	HX_STACK_LINE(243)
+	HX_STACK_LINE(235)
 	return this->regionAllie;
 }
 
@@ -547,14 +547,14 @@ HX_DEFINE_DYNAMIC_FUNC0(Region_obj,getAllie,return )
 
 Void Region_obj::attaqueZone( ::String orientation){
 {
-		HX_STACK_FRAME("Region","attaqueZone",0xbd970453,"Region.attaqueZone","Region.hx",246,0x0b29722a)
+		HX_STACK_FRAME("Region","attaqueZone",0xbd970453,"Region.attaqueZone","Region.hx",238,0x0b29722a)
 		HX_STACK_THIS(this)
 		HX_STACK_ARG(orientation,"orientation")
-		HX_STACK_LINE(247)
+		HX_STACK_LINE(239)
 		Dynamic p = this->listeVoisins->get(orientation);		HX_STACK_VAR(p,"p");
-		HX_STACK_LINE(248)
+		HX_STACK_LINE(241)
 		if (((::Main_obj::regions->__get(p->__Field(HX_CSTRING("x"),true)).StaticCast< Array< ::Dynamic > >()->__get(p->__Field(HX_CSTRING("y"),true)).StaticCast< ::Region >()->getFaction()->nom == HX_CSTRING("Neutre")))){
-			HX_STACK_LINE(249)
+			HX_STACK_LINE(242)
 			::Main_obj::regions->__get(p->__Field(HX_CSTRING("x"),true)).StaticCast< Array< ::Dynamic > >()->__get(p->__Field(HX_CSTRING("y"),true)).StaticCast< ::Region >()->changement_Faction(this->faction);
 		}
 	}
