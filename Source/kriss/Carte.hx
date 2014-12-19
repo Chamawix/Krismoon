@@ -20,6 +20,12 @@ class Carte extends Sprite {
 	}
 
 
+	/* 
+		Création des factions avec choix des noms, des couleurs et de leurs attaque/defense
+		Initialisation de la map de régions
+		Appel de drawMap
+	*/
+
 	private function init(){
 
 		factions.push(new Faction("Mort-vivant", 9, 1, 0x111111));
@@ -42,6 +48,13 @@ class Carte extends Sprite {
 
 	}
 
+
+	/* 
+		Création de la map initiale et des hexagones, avec affichage
+		Chaque hexagone devient une région
+		Initialisation des factions et de leurs position de départ
+		Remplissage de regions
+	*/
 	private function drawMap(mapx:Int, mapy:Int, w:Int, h:Int):Void {
 
 		var radius = 20;

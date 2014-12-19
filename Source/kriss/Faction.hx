@@ -12,7 +12,9 @@ class Faction{
 	private var puissanceDefense: Int;
 	public var couleur: UInt;
 
-	//Crée une faction
+
+	// Création d'une faction
+
 	public function new(nom:String, puissanceAttaque:Int, puissanceDefense:Int, couleur:UInt)
 	{
 		this.nom=nom;
@@ -21,6 +23,12 @@ class Faction{
 		this.couleur=couleur;
 
 	}
+
+
+	/*
+		Sélection aléatoire d'une région dans la faction
+		Si elle a des enemis, effectue une attaque sur un d'eux
+	*/
 
 	public function attaque() :Void{
 
@@ -34,7 +42,7 @@ class Faction{
 		var count=0;
 		
 		while (!atqDone){
-			//
+			
 			count++;
 
 			var i = Std.int(Math.random()*territoire.length);
@@ -59,6 +67,9 @@ class Faction{
 		
 	}
 
+
+	// ajout d'une nouvelle regions dans la faction, suite a une attaque
+
 	public function ajoutTerritoire(region:Region):Void{
 		// if(nom != "Neutre") {
 		// 	#if js
@@ -67,6 +78,9 @@ class Faction{
 		// }
 		territoire.push(region);
 	}
+
+
+	// retrait d'une region, suite a une défaite
 
 	public function retraitTerritoire(region:Region):Void{
 		territoire.remove(region);
