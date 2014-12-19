@@ -87,19 +87,19 @@ class ApplicationMain {
 			depthBuffer: false,
 			fps: Std.int (60),
 			fullscreen: false,
-			height: Std.int (0),
+			height: Std.int (400),
 			orientation: "",
 			resizable: true,
 			stencilBuffer: false,
 			title: "KrisMoon",
 			vsync: false,
-			width: Std.int (0),
+			width: Std.int (640),
 			
 		}
 		
 		#if js
 		#if munit
-		flash.Lib.embed (null, 0, 0, "FFFFFF");
+		flash.Lib.embed (null, 640, 400, "FFFFFF");
 		#end
 		#else
 		create ();

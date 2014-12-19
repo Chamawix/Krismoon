@@ -8,10 +8,21 @@ import openfl.display.Sprite;
 
 class Krissmoon extends Sprite {
 
-	public static var carte = new Carte();
+	public static var carte:Carte;
+	public static inline var NUM_ROWS= Std.int(12);
+	public static inline var NUM_COLUMNS= Std.int(12);
+
 
 	public function new() {
 		super();
+
+
+		#if js
+		//	js.Lib.alert(stage.stageWidth);
+		#end
+		
+		carte = new Carte(stage.stageWidth, stage.stageHeight, NUM_ROWS, NUM_COLUMNS);
+
 
 		stage.addEventListener(KeyboardEvent.KEY_UP, event_changeColor);
 

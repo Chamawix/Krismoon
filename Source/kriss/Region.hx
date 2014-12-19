@@ -24,14 +24,27 @@ class Region {
 
 	public function new(h:Case,nouvelleFaction:Faction){
 
-		hexa= h;
+		hexa=h;
 		faction=nouvelleFaction;
 
+		// #if js
+		// 		js.Lib.alert(this);
+		// #end
+
 		hexa.updateHexa(faction.couleur);
+		// #if js
+		// 		js.Lib.alert(this + "\n" + " AjoutTerritoire ou listeVoisin");
+		// #end
 
 		faction.ajoutTerritoire(this);
+		// #if js
+		// 		js.Lib.alert(this + "\n" + " listeVoisins bug");
+		// #end
 
 		listeVoisins=voisins();
+		// #if js
+		// 		js.Lib.alert(this);
+		// #end
 		
 	}
 
@@ -60,7 +73,7 @@ class Region {
 
 			
 		}
-
+		
 		if(hexa.ligne %2 == 0)
 		{
 			for (i in 0...6){
@@ -90,7 +103,7 @@ class Region {
 							q= hexa.colonne+1;
 							r= hexa.ligne;
 							
-							if (q<Krissmoon.carte.getNum_Columns()){
+							if (q< Krissmoon.NUM_COLUMNS){
 							result.set("E",{x:q, y:r});
 						};
 
@@ -98,8 +111,8 @@ class Region {
 					
 					case 4 :
 							q= hexa.colonne ;
-							r= hexa.ligne +1;
-							if (r<Krissmoon.carte.getNum_Rows()){
+							r= hexa.ligne+1;
+							if (r<Krissmoon.NUM_ROWS){
 							result.set("SE",{x:q, y:r});
 						}
 		
@@ -107,7 +120,7 @@ class Region {
 					case 5 :
 							q= hexa.colonne -1;
 							r= hexa.ligne +1;
-							if (q>=0 && r<Krissmoon.carte.getNum_Rows()){
+							if (q>=0 && r<Krissmoon.NUM_ROWS){
 							result.set("SO", {x:q, y:r});
 						}
 		
@@ -134,7 +147,7 @@ class Region {
 					case 2 :
 							q= hexa.colonne+1;
 							r= hexa.ligne -1;
-							if (r>=0 && q<Krissmoon.carte.getNum_Columns()){
+							if (r>=0 && q<Krissmoon.NUM_COLUMNS){
 							result.set("NE",{x:q, y:r});
 						}
 		
@@ -142,7 +155,7 @@ class Region {
 					case 3 :
 							q= hexa.colonne +1;
 							r= hexa.ligne;
-							if (q<Krissmoon.carte.getNum_Columns()){
+							if (q<Krissmoon.NUM_COLUMNS){
 							result.set("E",{x:q, y:r});
 						}
 		
@@ -150,7 +163,7 @@ class Region {
 					case 4 :
 							q= hexa.colonne+1;
 							r= hexa.ligne+1;
-							if (r<Krissmoon.carte.getNum_Rows() && q< Krissmoon.carte.getNum_Columns()){
+							if (r<Krissmoon.NUM_ROWS && q< Krissmoon.NUM_COLUMNS){
 							result.set("SE",{x:q, y:r});
 						}
 		
@@ -158,7 +171,7 @@ class Region {
 					case 5 :
 							q= hexa.colonne;
 							r= hexa.ligne+1;
-							if (r <Krissmoon.carte.getNum_Rows()){
+							if (r <Krissmoon.NUM_ROWS){
 							result.set("SO",{x:q, y:r});
 						}
 		
@@ -181,7 +194,9 @@ class Region {
 	public function typeVoisins():Void {
 		var iter = listeVoisins.keys();
 		for (voisin in iter){
-			if (faction == Krissmoon.carte.get.regions[listeVoisins.get(voisin).x][listeVoisins.get(voisin).y].getFaction()){
+			var reg = Krissmoon.carte.getRegions();
+			trace(reg);
+			if (faction == reg[listeVoisins.get(voisin).x][listeVoisins.get(voisin).y].getFaction()){
 				if(regionAllie.indexOf(""+voisin) == -1 )
 					regionAllie.push(""+voisin);
 				if(regionEnnemie.indexOf(""+voisin) != -1)
@@ -209,7 +224,7 @@ class Region {
 	public function attaqueZone( orientation:String){
 		var p = listeVoisins.get(orientation);
 		var r = Krissmoon.carte.getRegions();
-		if(r[p.x][p.y].getFaction().nom == "Neutre")
+		if(r[p.x][p.y].getFaction().getNom() == "Neutre")
 		r[p.x][p.y].changement_Faction(faction);
 		// #if js
 		// 	js.Lib.alert(orientation+"\n"+ p + "\n" + this.hexa.ligne +"/"+this.hexa.colonne);

@@ -4,7 +4,7 @@ import flash.Vector;
 
 class Faction{
 
-	public var nom:String;
+	private var nom:String;
 	private var territoire = new Array <Region> ();
 	//private var ia:Ia; Pour plus tard
 	private var frontiere = new Array <Region> ();
@@ -27,7 +27,7 @@ class Faction{
 
 	/*
 		Sélection aléatoire d'une région dans la faction
-		Si elle a des enemis, effectue une attaque sur un d'eux
+		Si elle a des enemis, effectue une attaque aléatoirement sur un des terrains ennemis
 	*/
 
 	public function attaque() :Void{
@@ -84,5 +84,9 @@ class Faction{
 
 	public function retraitTerritoire(region:Region):Void{
 		territoire.remove(region);
+	}
+
+	public function getNom():String {
+		return nom;
 	}
 }

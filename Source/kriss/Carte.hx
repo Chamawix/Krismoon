@@ -8,14 +8,26 @@ import openfl.display.Sprite;
 
 class Carte extends Sprite {
 
-	private var NUM_COLUMNS = 12;
-	private var NUM_ROWS = 12;
+	private var columns: Int;
+	private var rows :Int;
 	private var factionNeutre = new Faction("Neutre", 0, 0, 0xAAAAAA);
 	private var regions = new Array <Array <Region>> ();
 	private var factions = new Array <Faction> ();
+	private var w:Float;
+	private var h: Float;
 
-	public function new() {
+	public function new(width : Float, height: Float, nrows:Int, ncolumns:Int) {
 		super();
+
+		w = width;
+		h = height;
+		columns= ncolumns;
+		rows = nrows;
+
+		// #if js
+		// 	js.Lib.alert(columns+"/"+ rows +"/"+ factionNeutre+"/"+ regions+ "/"+ factions);
+		// #end
+
 		init();	
 	}
 
@@ -34,17 +46,22 @@ class Carte extends Sprite {
 		factions.push(new Faction("Morticor", 3, 7, 0x1122BB));
 		factions.push(new Faction ("Envirald", 1, 9, 0x00AA00));
 
-		for (row in 0...NUM_ROWS) {
+		for (row in 0...rows) {
 			
 			regions[row] = new Array <Region> ();
 			
-			for (column in 0...NUM_COLUMNS) {
+			for (column in 0...columns) {
 				
 				regions[row][column] = null;			
 			}		
-		}
+		}		
 
-		drawMap(NUM_ROWS, NUM_COLUMNS, Std.int(stage.stageWidth-100),Std.int(stage.stageHeight-100));
+				// #if js
+				// 	js.Lib.alert(columns+"/"+ rows +"/"+ factionNeutre+"/"+ regions+ "/"+ factions);
+				// #end
+
+
+		drawMap(rows, columns, Std.int(w-100),Std.int(h-100));
 
 	}
 
@@ -56,10 +73,12 @@ class Carte extends Sprite {
 		Remplissage de regions
 	*/
 	private function drawMap(mapx:Int, mapy:Int, w:Int, h:Int):Void {
-
+		
 		var radius = 20;
 		var xhexa:Float;
 		var yhexa:Float;
+
+				
 
 		for (i in 0...mapy){
 			for (j in 0...mapx){
@@ -72,19 +91,27 @@ class Carte extends Sprite {
 				xhexa = i*radius*2*Math.sqrt(3)/2+radius*2+radius -2*radius/15;
 				yhexa = j*radius*2*3/4+radius*2;
 			}
+				
 
 				var colonne=i;
 				var ligne=j;
 
 				var hexa = new Case(colonne, ligne, xhexa, yhexa, 0xAA0000+j*1000+i*10000, radius);
 
+
 				hexa.drawOneHexa();
 
 				//Ajoute au stage l'hexagone -> Devient graphique.
 				addChild(hexa);
 
+				// #if js
+				// 	js.Lib.alert(hexa);
+				// #end
+
+
 				//Sauvegarde en mémoire le child du stage. 
 				var region:Region;
+				
 
 				if (i== 0 && j==0) {
 
@@ -101,8 +128,15 @@ class Carte extends Sprite {
 				else{ 
 					region = new Region (hexa,factionNeutre);
 				}
+				//region = new Region (hexa,factionNeutre);
+
+			// #if js
+			// 	js.Lib.alert(region);
+			// #end
+
 		
 			regions[i][j] = region;
+	
 			}
 		}
 	 }
@@ -116,11 +150,11 @@ class Carte extends Sprite {
 	 }
 
 	 public function getNum_Columns():Int{
-	 	return NUM_COLUMNS;
+	 	return columns;
 	 }
 
 	  public function getNum_Rows():Int{
-	 	return NUM_ROWS;
+	 	return rows;
 	 }
 
 
