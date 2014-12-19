@@ -3,8 +3,8 @@
 #ifndef INCLUDED_DocumentClass
 #include <DocumentClass.h>
 #endif
-#ifndef INCLUDED_Main
-#include <Main.h>
+#ifndef INCLUDED_kriss_Krissmoon
+#include <kriss/Krissmoon.h>
 #endif
 #ifndef INCLUDED_openfl__v2_Lib
 #include <openfl/_v2/Lib.h>

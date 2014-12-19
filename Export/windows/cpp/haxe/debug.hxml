@@ -20,5 +20,5 @@
 --remap flash:openfl
 -cpp Export/windows/cpp/obj
 -cp Export/windows/cpp/haxe
---macro keep("Main")
+--macro keep("kriss.Krissmoon")
 -debug

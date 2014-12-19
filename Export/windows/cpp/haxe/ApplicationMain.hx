@@ -82,7 +82,7 @@ class ApplicationMain {
 				
 				var hasMain = false;
 				
-				for (methodName in Type.getClassFields (Main)) {
+				for (methodName in Type.getClassFields (kriss.Krissmoon)) {
 					
 					if (methodName == "main") {
 						
@@ -95,7 +95,7 @@ class ApplicationMain {
 					
 				if (hasMain) {
 					
-					Reflect.callMethod (Main, Reflect.field (Main, "main"), []);
+					Reflect.callMethod (kriss.Krissmoon, Reflect.field (kriss.Krissmoon, "main"), []);
 					
 				} else {
 					
@@ -197,7 +197,7 @@ class ApplicationMain {
 
 
 @:build(DocumentClass.build())
-@:keep class DocumentClass extends Main {}
+@:keep class DocumentClass extends kriss.Krissmoon {}
 
 
 #if mobile
@@ -316,7 +316,7 @@ class ApplicationMain {
 			#end
 			
 			var hasMain = false;
-			for (methodName in Type.getClassFields (Main)) {
+			for (methodName in Type.getClassFields (kriss.Krissmoon)) {
 				if (methodName == "main") {
 					hasMain = true;
 					break;
@@ -324,9 +324,9 @@ class ApplicationMain {
 			}
 			
 			if (hasMain) {
-				Reflect.callMethod (Main, Reflect.field (Main, "main"), []);
+				Reflect.callMethod (kriss.Krissmoon, Reflect.field (kriss.Krissmoon, "main"), []);
 			}else {
-				var instance = Type.createInstance (Main, []);
+				var instance = Type.createInstance (kriss.Krissmoon, []);
 			}
 			
 			if (autoShowFrame) {
@@ -355,7 +355,7 @@ class ApplicationMain {
 #else
 
 
-import Main;
+import kriss.Krissmoon;
 
 class ApplicationMain {
 	

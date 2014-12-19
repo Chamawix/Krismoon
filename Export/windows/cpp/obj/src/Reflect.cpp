@@ -189,73 +189,6 @@ bool Reflect_obj::deleteField( Dynamic o,::String field){
 
 STATIC_HX_DEFINE_DYNAMIC_FUNC2(Reflect_obj,deleteField,return )
 
-Dynamic Reflect_obj::copy( Dynamic o){
-	HX_STACK_FRAME("Reflect","copy",0x47e2b5a6,"Reflect.copy","C:\\HaxeToolkit\\haxe\\std/cpp/_std/Reflect.hx",92,0x487b3827)
-	HX_STACK_ARG(o,"o")
-	HX_STACK_LINE(93)
-	if (((o == null()))){
-		HX_STACK_LINE(93)
-		return null();
-	}
-	HX_STACK_LINE(94)
-	Dynamic _g = o->__GetType();		HX_STACK_VAR(_g,"_g");
-	HX_STACK_LINE(94)
-	if (((_g == ::vtString))){
-		HX_STACK_LINE(94)
-		return o;
-	}
-	HX_STACK_LINE(95)
-	Dynamic _g1 = o->__GetType();		HX_STACK_VAR(_g1,"_g1");
-	HX_STACK_LINE(95)
-	if (((_g1 == ::vtArray))){
-		HX_STACK_LINE(96)
-		return o->__Field(HX_CSTRING("copy"),true)();
-	}
-	struct _Function_1_1{
-		inline static Dynamic Block( ){
-			HX_STACK_FRAME("*","closure",0x5bdab937,"*.closure","C:\\HaxeToolkit\\haxe\\std/cpp/_std/Reflect.hx",97,0x487b3827)
-			{
-				hx::Anon __result = hx::Anon_obj::Create();
-				return __result;
-			}
-			return null();
-		}
-	};
-	HX_STACK_LINE(97)
-	Dynamic o2 = _Function_1_1::Block();		HX_STACK_VAR(o2,"o2");
-	HX_STACK_LINE(98)
-	{
-		HX_STACK_LINE(98)
-		int _g2 = (int)0;		HX_STACK_VAR(_g2,"_g2");
-		HX_STACK_LINE(98)
-		Array< ::String > _g11 = ::Reflect_obj::fields(o);		HX_STACK_VAR(_g11,"_g11");
-		HX_STACK_LINE(98)
-		while((true)){
-			HX_STACK_LINE(98)
-			if ((!(((_g2 < _g11->length))))){
-				HX_STACK_LINE(98)
-				break;
-			}
-			HX_STACK_LINE(98)
-			::String f = _g11->__get(_g2);		HX_STACK_VAR(f,"f");
-			HX_STACK_LINE(98)
-			++(_g2);
-			HX_STACK_LINE(99)
-			Dynamic value = ::Reflect_obj::field(o,f);		HX_STACK_VAR(value,"value");
-			HX_STACK_LINE(99)
-			if (((o2 != null()))){
-				HX_STACK_LINE(99)
-				o2->__SetField(f,value,false);
-			}
-		}
-	}
-	HX_STACK_LINE(100)
-	return o2;
-}
-
-
-STATIC_HX_DEFINE_DYNAMIC_FUNC1(Reflect_obj,copy,return )
-
 
 Reflect_obj::Reflect_obj()
 {
@@ -264,9 +197,6 @@ Reflect_obj::Reflect_obj()
 Dynamic Reflect_obj::__Field(const ::String &inName,bool inCallProp)
 {
 	switch(inName.length) {
-	case 4:
-		if (HX_FIELD_EQ(inName,"copy") ) { return copy_dyn(); }
-		break;
 	case 5:
 		if (HX_FIELD_EQ(inName,"field") ) { return field_dyn(); }
 		break;
@@ -309,7 +239,6 @@ static ::String sStaticFields[] = {
 	HX_CSTRING("compareMethods"),
 	HX_CSTRING("isObject"),
 	HX_CSTRING("deleteField"),
-	HX_CSTRING("copy"),
 	String(null()) };
 
 #if HXCPP_SCRIPTABLE

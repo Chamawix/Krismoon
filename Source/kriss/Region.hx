@@ -183,9 +183,9 @@ class Region {
 	}
 
 	public function getVoisins():Void {
-		#if js
+		/*#if js
 		js.Lib.alert(listeVoisins + "\n Voisins alliés" + regionAllie +"\n Voisins Ennemies" + regionEnnemie);
-		#end
+		#end*/
 	}
 	public function getFaction():Faction{
 		return faction;
@@ -195,7 +195,7 @@ class Region {
 		var iter = listeVoisins.keys();
 		for (voisin in iter){
 			var reg = Krissmoon.carte.getRegions();
-			trace(reg);
+			//trace(reg);
 			if (faction == reg[listeVoisins.get(voisin).x][listeVoisins.get(voisin).y].getFaction()){
 				if(regionAllie.indexOf(""+voisin) == -1 )
 					regionAllie.push(""+voisin);

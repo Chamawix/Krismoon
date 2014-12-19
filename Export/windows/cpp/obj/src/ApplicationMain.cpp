@@ -6,9 +6,6 @@
 #ifndef INCLUDED_DocumentClass
 #include <DocumentClass.h>
 #endif
-#ifndef INCLUDED_Main
-#include <Main.h>
-#endif
 #ifndef INCLUDED_Reflect
 #include <Reflect.h>
 #endif
@@ -23,6 +20,9 @@
 #endif
 #ifndef INCLUDED_haxe_io_Path
 #include <haxe/io/Path.h>
+#endif
+#ifndef INCLUDED_kriss_Krissmoon
+#include <kriss/Krissmoon.h>
 #endif
 #ifndef INCLUDED_openfl__v2_Assets
 #include <openfl/_v2/Assets.h>
@@ -147,7 +147,7 @@ Void ApplicationMain_obj::main( ){
 					HX_STACK_LINE(85)
 					int _g = (int)0;		HX_STACK_VAR(_g,"_g");
 					HX_STACK_LINE(85)
-					Array< ::String > _g1 = ::Type_obj::getClassFields(hx::ClassOf< ::Main >());		HX_STACK_VAR(_g1,"_g1");
+					Array< ::String > _g1 = ::Type_obj::getClassFields(hx::ClassOf< ::kriss::Krissmoon >());		HX_STACK_VAR(_g1,"_g1");
 					HX_STACK_LINE(85)
 					while(((_g < _g1->length))){
 						HX_STACK_LINE(85)
@@ -166,7 +166,7 @@ Void ApplicationMain_obj::main( ){
 				HX_STACK_LINE(96)
 				if ((hasMain)){
 					HX_STACK_LINE(98)
-					::Reflect_obj::callMethod(hx::ClassOf< ::Main >(),::Reflect_obj::field(hx::ClassOf< ::Main >(),HX_CSTRING("main")),Dynamic( Array_obj<Dynamic>::__new()));
+					::Reflect_obj::callMethod(hx::ClassOf< ::kriss::Krissmoon >(),::Reflect_obj::field(hx::ClassOf< ::kriss::Krissmoon >(),HX_CSTRING("main")),Dynamic( Array_obj<Dynamic>::__new()));
 				}
 				else{
 					HX_STACK_LINE(102)

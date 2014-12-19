@@ -5,9 +5,9 @@
 #include <hxcpp.h>
 #endif
 
-#include <Main.h>
+#include <kriss/Krissmoon.h>
 HX_DECLARE_CLASS0(DocumentClass)
-HX_DECLARE_CLASS0(Main)
+HX_DECLARE_CLASS1(kriss,Krissmoon)
 HX_DECLARE_CLASS3(openfl,_v2,display,DisplayObject)
 HX_DECLARE_CLASS3(openfl,_v2,display,DisplayObjectContainer)
 HX_DECLARE_CLASS3(openfl,_v2,display,IBitmapDrawable)
@@ -18,9 +18,9 @@ HX_DECLARE_CLASS3(openfl,_v2,events,EventDispatcher)
 HX_DECLARE_CLASS3(openfl,_v2,events,IEventDispatcher)
 
 
-class HXCPP_CLASS_ATTRIBUTES  DocumentClass_obj : public ::Main_obj{
+class HXCPP_CLASS_ATTRIBUTES  DocumentClass_obj : public ::kriss::Krissmoon_obj{
 	public:
-		typedef ::Main_obj super;
+		typedef ::kriss::Krissmoon_obj super;
 		typedef DocumentClass_obj OBJ_;
 		DocumentClass_obj();
 		Void __construct();
