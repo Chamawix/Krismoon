@@ -7,131 +7,242 @@ import motion.Actuate;
 import flash.display.Sprite;
 import flash.Vector;
 import flash.display.Shape;
+import haxe.ds.StringMap;
+
+import nape.shape.Polygon;
+import flash.Lib;
+import nape.geom.Vec2;
+import nape.phys.Body;
+import nape.phys.BodyType;
+import nape.space.Space;
+import nape.util.Debug;
+import nape.util.ShapeDebug;
+import flash.display.Bitmap;
+import flash.display.BitmapData;
+import openfl.Assets;
+import motion.Actuate;
+import flash.events.Event;
+import flash.events.MouseEvent;
+import openfl.events.KeyboardEvent;
+import openfl.geom.ColorTransform;
 
 
-
-
+	typedef Point ={
+	x:Int
+	,y:Int
+}
 
 class Region {
 
+
 	public var hexa:Case;
-	public var map:Map<String,Point>;
+	private var faction:Faction;
+	private var listeVoisins:StringMap<Point>;
+	private var regionAllie = new Array <String> ();
+	private var regionEnnemie = new Array <String> ();
 
 
 
-	public function new(){
+	public function new(h:Case,nouvelleFaction:Faction){
+
+		hexa= h;
+		faction=nouvelleFaction;
+
+		hexa.updateHexa(faction.couleur);
+
+		faction.ajoutTerritoire(this);
+
+		listeVoisins=voisins();
+		//if (faction.nom != "Neutre") 
+			//typeVoisins();
+	}
+
+	public function changement_Faction(nouvelleFaction:Faction):Void{
+
+
+
+		// #if js
+		// 	js.Lib.alert(this);
+		// #end
 		
-		map= voisins();
+		//retirer la région de la faction
+		faction.retraitTerritoire(this);
+
+		faction = nouvelleFaction;
+		hexa.updateHexa(faction.couleur);
+
+		//Ajouter la région dans la faction
+		faction.ajoutTerritoire(this);
+
+		typeVoisins();
 
 	}
 
-	public function voisins():Map<String, Point>{
-		var result= new Map <String,Point> ();
+	private function voisins():StringMap <Point>{
 
-		if(hexa.colonne %2 == 0)
+		var result= new StringMap <Point> ();
+		var p: Point = {x:hexa.ligne, y:hexa.colonne};
+		var q:Int;
+		var r:Int;
+		if (hexa.colonne==8) {
+			#if js
+			//js.Lib.alert(hexa.colonne+"/"+hexa.ligne);
+			#end
+		}
+
+		if(hexa.ligne %2 == 0)
 		{
-			for (var i=0 ; i<6; i++){
+			for (i in 0...6){
 				switch (i) {
 					case 0 :
-							q= hexa.colonne --;
+							q= hexa.colonne -1;
 							r= hexa.ligne;
-							if (hexa.colonne>0){
-							result.add("O",{hexa.ligne,hexa.colonne})
-						}
-					break; 
+
+							if (q>=0) result.set("O", {x:q,y:r});
+
 					case 1 :
-							q= hexa.colonne --;
-							r= hexa.ligne --;
-							if (hexa.colonne>0 && hexa.ligne >0){
-							result.add("NO",{hexa.ligne,hexa.colonne})
-						}
-					break; 
+							q= hexa.colonne -1;
+							r= hexa.ligne -1;
+							if (q>=0 && r>=0){
+							result.set("NO",{x:q, y:r});
+							}
+
 					case 2 :
 							q= hexa.colonne;
-							r= hexa.ligne --;
-							if (hexa.colonne>0){
-							result.add("NE",{hexa.ligne,hexa.colonne})
-						}
-					break; 
+							r= hexa.ligne -1;
+							if (r>=0){
+							result.set("NE",{x:q, y:r});
+						};
+		
 					
 					case 3 :
-							q= hexa.colonne ++;
+							q= hexa.colonne+1;
 							r= hexa.ligne;
-							if (hexa.colonne<NUM_COLUMNS){
-							result.add("E",{hexa.ligne,hexa.colonne})
-						}
-					break; 
+							
+							if (q<Main.NUM_COLUMNS){
+							result.set("E",{x:q, y:r});
+						};
+
+		
 					
 					case 4 :
 							q= hexa.colonne ;
-							r= hexa.ligne ++;
-							if (hexa.ligne<NUM_ROW){
-							result.add("SE",{hexa.ligne,hexa.colonne})
+							r= hexa.ligne +1;
+							if (r<Main.NUM_ROWS){
+							result.set("SE",{x:q, y:r});
 						}
-					break; 
+		
 					
 					case 5 :
-							q= hexa.colonne --;
-							r= hexa.ligne ++;
-							if (hexa.colonne>0 && hexa.ligne<NUM_ROW){
-							result.add("SO",{hexa.ligne,hexa.colonne})
+							q= hexa.colonne -1;
+							r= hexa.ligne +1;
+							if (q>=0 && r<Main.NUM_ROWS){
+							result.set("SO", {x:q, y:r});
 						}
-					break; 
+		
 				} 
 			}
 		}
 		else{
-			for (var i=0 ; i<6; i++){
-				switch (i) {
+			for (j in 0...6){
+				switch (j) {
 					case 0 :
-							q= hexa.colonne --;
+							q= hexa.colonne -1;
 							r= hexa.ligne;
-							if (hexa.colonne>0){
-							result.add("O",{hexa.ligne,hexa.colonne})
+							if (q>=0){
+							result.set("O",{x:q, y:r});
 						}
-					break; 
+		
 					case 1 :
 							q= hexa.colonne;
-							r= hexa.ligne --;
-							if (hexa.ligne>0){
-							result.add("NO",{hexa.ligne,hexa.colonne})
+							r= hexa.ligne-1;
+							if (r>=0){
+							result.set("NO",{x:q, y:r});
 						}
-					break; 
+		
 					case 2 :
-							q= hexa.colonne++;
-							r= hexa.ligne --;
-							if (hexa.colonne>0 && hexa.colonne < NUM_COLUMNS){
-							result.add("NE",{hexa.ligne,hexa.colonne})
+							q= hexa.colonne+1;
+							r= hexa.ligne -1;
+							if (r>=0 && q<Main.NUM_COLUMNS){
+							result.set("NE",{x:q, y:r});
 						}
-					break; 
+		
 					
 					case 3 :
-							q= hexa.colonne ++;
+							q= hexa.colonne +1;
 							r= hexa.ligne;
-							if (hexa.colonne<NUM_COLUMNS){
-							result.add("E",{hexa.ligne,hexa.colonne})
+							if (q<Main.NUM_COLUMNS){
+							result.set("E",{x:q, y:r});
 						}
-					break; 
+		
 					
 					case 4 :
-							q= hexa.colonne++;
-							r= hexa.ligne ++;
-							if (hexa.ligne<NUM_ROW && hexa.colonne < NUM_COLUMNS){
-							result.add("SE",{hexa.ligne,hexa.colonne})
+							q= hexa.colonne+1;
+							r= hexa.ligne+1;
+							if (r<Main.NUM_ROWS && q< Main.NUM_COLUMNS){
+							result.set("SE",{x:q, y:r});
 						}
-					break; 
+		
 					
 					case 5 :
-							q= hexa.colonne ;
-							r= hexa.ligne ++;
-							if ( hexa.ligne<NUM_ROW){
-							result.add("SO",{hexa.ligne,hexa.colonne})
+							q= hexa.colonne;
+							r= hexa.ligne+1;
+							if (r <Main.NUM_ROWS){
+							result.set("SO",{x:q, y:r});
 						}
-					break; 
+		
 				} 
 			}
 		}
 
 		return result;
 	}
+
+	public function getVoisins():Void {
+		#if js
+		js.Lib.alert(listeVoisins + "\n Voisins alliés" + regionAllie +"\n Voisins Ennemies" + regionEnnemie);
+		#end
+	}
+	public function getFaction():Faction{
+		return faction;
+	}
+
+	public function typeVoisins():Void {
+		var iter = listeVoisins.keys();
+		for (voisin in iter){
+			if (faction == Main.regions[listeVoisins.get(voisin).x][listeVoisins.get(voisin).y].getFaction()){
+				if(regionAllie.indexOf(""+voisin) == -1 )
+					regionAllie.push(""+voisin);
+				if(regionEnnemie.indexOf(""+voisin) != -1)
+					regionEnnemie.remove(""+voisin);
+			}
+			else {
+				if (regionEnnemie.indexOf(""+voisin) == -1)
+					regionEnnemie.push(""+voisin);
+
+				if (regionAllie.indexOf(""+voisin)!= -1)
+					regionAllie.remove(""+voisin);
+			}
+		}
+
+	}
+
+
+	public function getEnnemie():Array <String> {
+		return regionEnnemie;
+	}
+	public function getAllie(): Array <String> {
+		return regionAllie;
+	}
+
+	public function attaqueZone( orientation:String){
+		var p = listeVoisins.get(orientation);
+		
+		if(Main.regions[p.x][p.y].getFaction().nom == "Neutre")
+		Main.regions[p.x][p.y].changement_Faction(faction);
+		// #if js
+		// 	js.Lib.alert(orientation+"\n"+ p + "\n" + this.hexa.ligne +"/"+this.hexa.colonne);
+		// #end
+		}
+
 }
