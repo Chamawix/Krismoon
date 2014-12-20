@@ -35,6 +35,7 @@ const char *__hxcpp_all_files[] = {
 "C:\\HaxeToolkit\\haxe\\std/haxe/io/Input.hx",
 "C:\\HaxeToolkit\\haxe\\std/haxe/io/Output.hx",
 "C:\\HaxeToolkit\\haxe\\std/haxe/io/Path.hx",
+<<<<<<< HEAD
 "Case.hx",
 "DefaultAssetLibrary.hx",
 "Main.hx",
@@ -144,6 +145,15 @@ const char *__hxcpp_all_files[] = {
 "nape/space/Space.hx",
 "nape/util/Debug.hx",
 "nape/util/ShapeDebug.hx",
+=======
+"DefaultAssetLibrary.hx",
+"haxe/Timer.hx",
+"kriss/Carte.hx",
+"kriss/Case.hx",
+"kriss/Faction.hx",
+"kriss/Krissmoon.hx",
+"kriss/Region.hx",
+>>>>>>> version_remasterisée
 "openfl/Vector.hx",
 "openfl/_v2/Assets.hx",
 "openfl/_v2/Lib.hx",
@@ -220,6 +230,7 @@ const char *__hxcpp_all_files[] = {
 "openfl/system/ApplicationDomain.hx",
 "openfl/system/LoaderContext.hx",
 "openfl/system/SecurityDomain.hx",
+<<<<<<< HEAD
 "zpp_nape/Const.hx",
 "zpp_nape/ID.hx",
 "zpp_nape/callbacks/Callback.hx",
@@ -281,12 +292,18 @@ const char *__hxcpp_all_files[] = {
 "zpp_nape/util/Lists.hx",
 "zpp_nape/util/Math.hx",
 "zpp_nape/util/RBTree.hx",
+=======
+>>>>>>> version_remasterisée
 #endif
  0 };
 
 const char *__hxcpp_all_files_fullpath[] = {
 #ifdef HXCPP_DEBUGGER
+<<<<<<< HEAD
 "C:\\Users\\jerome\\Mes documents\\Github\\Krismoon\\Export\\windows\\cpp\\haxe\\ApplicationMain.hx",
+=======
+"C:\\Users\\jerome\\Documents\\GitHub\\Krismoon\\Export\\windows\\cpp\\haxe\\ApplicationMain.hx",
+>>>>>>> version_remasterisée
 "C:\\HaxeToolkit\\haxe\\std\\Lambda.hx",
 "C:\\HaxeToolkit\\haxe\\std\\List.hx",
 "C:\\HaxeToolkit\\haxe\\std\\StringTools.hx",
@@ -318,6 +335,7 @@ const char *__hxcpp_all_files_fullpath[] = {
 "C:\\HaxeToolkit\\haxe\\std\\haxe\\io\\Input.hx",
 "C:\\HaxeToolkit\\haxe\\std\\haxe\\io\\Output.hx",
 "C:\\HaxeToolkit\\haxe\\std\\haxe\\io\\Path.hx",
+<<<<<<< HEAD
 "C:\\Users\\jerome\\Mes documents\\Github\\Krismoon\\Source\\Case.hx",
 "C:\\Users\\jerome\\Mes documents\\Github\\Krismoon\\Export\\windows\\cpp\\haxe\\DefaultAssetLibrary.hx",
 "C:\\Users\\jerome\\Mes documents\\Github\\Krismoon\\Source\\Main.hx",
@@ -427,6 +445,15 @@ const char *__hxcpp_all_files_fullpath[] = {
 "C:\\HaxeToolkit\\haxe\\lib\\nape\\2,0,16\\nape\\space\\Space.hx",
 "C:\\HaxeToolkit\\haxe\\lib\\nape\\2,0,16\\nape\\util\\Debug.hx",
 "C:\\HaxeToolkit\\haxe\\lib\\nape\\2,0,16\\nape\\util\\ShapeDebug.hx",
+=======
+"C:\\Users\\jerome\\Documents\\GitHub\\Krismoon\\Export\\windows\\cpp\\haxe\\DefaultAssetLibrary.hx",
+"C:\\HaxeToolkit\\haxe\\lib\\openfl\\2,1,6\\haxe\\Timer.hx",
+"C:\\Users\\jerome\\Documents\\GitHub\\Krismoon\\Source\\kriss\\Carte.hx",
+"C:\\Users\\jerome\\Documents\\GitHub\\Krismoon\\Source\\kriss\\Case.hx",
+"C:\\Users\\jerome\\Documents\\GitHub\\Krismoon\\Source\\kriss\\Faction.hx",
+"C:\\Users\\jerome\\Documents\\GitHub\\Krismoon\\Source\\kriss\\Krissmoon.hx",
+"C:\\Users\\jerome\\Documents\\GitHub\\Krismoon\\Source\\kriss\\Region.hx",
+>>>>>>> version_remasterisée
 "C:\\HaxeToolkit\\haxe\\lib\\openfl\\2,1,6\\openfl\\Vector.hx",
 "C:\\HaxeToolkit\\haxe\\lib\\openfl\\2,1,6\\openfl\\_v2\\Assets.hx",
 "C:\\HaxeToolkit\\haxe\\lib\\openfl\\2,1,6\\openfl\\_v2\\Lib.hx",
@@ -503,6 +530,7 @@ const char *__hxcpp_all_files_fullpath[] = {
 "C:\\HaxeToolkit\\haxe\\lib\\openfl\\2,1,6\\openfl\\system\\ApplicationDomain.hx",
 "C:\\HaxeToolkit\\haxe\\lib\\openfl\\2,1,6\\openfl\\system\\LoaderContext.hx",
 "C:\\HaxeToolkit\\haxe\\lib\\openfl\\2,1,6\\openfl\\system\\SecurityDomain.hx",
+<<<<<<< HEAD
 "C:\\HaxeToolkit\\haxe\\lib\\nape\\2,0,16\\zpp_nape\\Const.hx",
 "C:\\HaxeToolkit\\haxe\\lib\\nape\\2,0,16\\zpp_nape\\ID.hx",
 "C:\\HaxeToolkit\\haxe\\lib\\nape\\2,0,16\\zpp_nape\\callbacks\\Callback.hx",
@@ -564,6 +592,8 @@ const char *__hxcpp_all_files_fullpath[] = {
 "C:\\HaxeToolkit\\haxe\\lib\\nape\\2,0,16\\zpp_nape\\util\\Lists.hx",
 "C:\\HaxeToolkit\\haxe\\lib\\nape\\2,0,16\\zpp_nape\\util\\Math.hx",
 "C:\\HaxeToolkit\\haxe\\lib\\nape\\2,0,16\\zpp_nape\\util\\RBTree.hx",
+=======
+>>>>>>> version_remasterisée
 #endif
  0 };
 
@@ -585,9 +615,14 @@ const char *__hxcpp_all_classes[] = {
 "openfl._v2.display.InteractiveObject",
 "openfl._v2.display.DisplayObjectContainer",
 "openfl._v2.display.Sprite",
+<<<<<<< HEAD
 "Main",
 "DocumentClass",
 "Case",
+=======
+"kriss.Krissmoon",
+"DocumentClass",
+>>>>>>> version_remasterisée
 "Date",
 "openfl._v2.AssetLibrary",
 "DefaultAssetLibrary",
@@ -613,6 +648,7 @@ const char *__hxcpp_all_classes[] = {
 "haxe.io.Path",
 "haxe.zip.Compress",
 "haxe.zip.Uncompress",
+<<<<<<< HEAD
 "motion.actuators.GenericActuator",
 "motion.actuators.SimpleActuator",
 "motion.easing.Expo",
@@ -729,6 +765,12 @@ const char *__hxcpp_all_classes[] = {
 "nape.space.Space",
 "nape.util.Debug",
 "nape.util.ShapeDebug",
+=======
+"kriss.Carte",
+"kriss.Case",
+"kriss.Faction",
+"kriss.Region",
+>>>>>>> version_remasterisée
 "openfl._Vector.Vector_Impl_",
 "openfl._v2.AssetCache",
 "openfl._v2.Assets",
@@ -811,6 +853,7 @@ const char *__hxcpp_all_classes[] = {
 "openfl.utils.Endian",
 "sys.FileSystem",
 "sys.io.FileOutput",
+<<<<<<< HEAD
 "zpp_nape.ZPP_Const",
 "zpp_nape.ZPP_ID",
 "zpp_nape.callbacks.ZPP_Callback",
@@ -1003,6 +1046,8 @@ const char *__hxcpp_all_classes[] = {
 "zpp_nape.util.ZPP_Set_ZPP_SimpleSeg",
 "zpp_nape.util.ZPP_Set_ZPP_SimpleEvent",
 "zpp_nape.util.ZPP_Set_ZPP_CbSet",
+=======
+>>>>>>> version_remasterisée
 #endif
  0 };
 } // namespace hx

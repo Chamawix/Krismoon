@@ -37,9 +37,12 @@ class HXCPP_CLASS_ATTRIBUTES  StringTools_obj : public hx::Object{
 		static bool startsWith( ::String s,::String start);
 		static Dynamic startsWith_dyn();
 
+<<<<<<< HEAD
 		static ::String hex( int n,Dynamic digits);
 		static Dynamic hex_dyn();
 
+=======
+>>>>>>> version_remasterisée
 };
 
 

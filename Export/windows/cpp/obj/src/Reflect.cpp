@@ -189,6 +189,7 @@ bool Reflect_obj::deleteField( Dynamic o,::String field){
 
 STATIC_HX_DEFINE_DYNAMIC_FUNC2(Reflect_obj,deleteField,return )
 
+<<<<<<< HEAD
 Dynamic Reflect_obj::copy( Dynamic o){
 	HX_STACK_FRAME("Reflect","copy",0x47e2b5a6,"Reflect.copy","C:\\HaxeToolkit\\haxe\\std/cpp/_std/Reflect.hx",92,0x487b3827)
 	HX_STACK_ARG(o,"o")
@@ -256,6 +257,8 @@ Dynamic Reflect_obj::copy( Dynamic o){
 
 STATIC_HX_DEFINE_DYNAMIC_FUNC1(Reflect_obj,copy,return )
 
+=======
+>>>>>>> version_remasterisée
 
 Reflect_obj::Reflect_obj()
 {
@@ -264,9 +267,12 @@ Reflect_obj::Reflect_obj()
 Dynamic Reflect_obj::__Field(const ::String &inName,bool inCallProp)
 {
 	switch(inName.length) {
+<<<<<<< HEAD
 	case 4:
 		if (HX_FIELD_EQ(inName,"copy") ) { return copy_dyn(); }
 		break;
+=======
+>>>>>>> version_remasterisée
 	case 5:
 		if (HX_FIELD_EQ(inName,"field") ) { return field_dyn(); }
 		break;
@@ -309,7 +315,10 @@ static ::String sStaticFields[] = {
 	HX_CSTRING("compareMethods"),
 	HX_CSTRING("isObject"),
 	HX_CSTRING("deleteField"),
+<<<<<<< HEAD
 	HX_CSTRING("copy"),
+=======
+>>>>>>> version_remasterisée
 	String(null()) };
 
 #if HXCPP_SCRIPTABLE

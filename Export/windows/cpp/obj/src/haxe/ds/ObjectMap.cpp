@@ -67,6 +67,7 @@ return null();
 
 HX_DEFINE_DYNAMIC_FUNC2(ObjectMap_obj,set,(void))
 
+<<<<<<< HEAD
 Dynamic ObjectMap_obj::get( Dynamic key){
 	HX_STACK_FRAME("haxe.ds.ObjectMap","get",0x27aa04ce,"haxe.ds.ObjectMap.get","C:\\HaxeToolkit\\haxe\\std/cpp/_std/haxe/ds/ObjectMap.hx",40,0xd94cd95e)
 	HX_STACK_THIS(this)
@@ -105,6 +106,8 @@ Dynamic ObjectMap_obj::iterator( ){
 
 HX_DEFINE_DYNAMIC_FUNC0(ObjectMap_obj,iterator,return )
 
+=======
+>>>>>>> version_remasterisée
 
 ObjectMap_obj::ObjectMap_obj()
 {
@@ -129,6 +132,7 @@ Dynamic ObjectMap_obj::__Field(const ::String &inName,bool inCallProp)
 	switch(inName.length) {
 	case 3:
 		if (HX_FIELD_EQ(inName,"set") ) { return set_dyn(); }
+<<<<<<< HEAD
 		if (HX_FIELD_EQ(inName,"get") ) { return get_dyn(); }
 		break;
 	case 6:
@@ -136,6 +140,8 @@ Dynamic ObjectMap_obj::__Field(const ::String &inName,bool inCallProp)
 		break;
 	case 8:
 		if (HX_FIELD_EQ(inName,"iterator") ) { return iterator_dyn(); }
+=======
+>>>>>>> version_remasterisée
 		break;
 	case 9:
 		if (HX_FIELD_EQ(inName,"__KeyRefs") ) { return __KeyRefs; }
@@ -180,9 +186,12 @@ static ::String sMemberFields[] = {
 	HX_CSTRING("__Internal"),
 	HX_CSTRING("__KeyRefs"),
 	HX_CSTRING("set"),
+<<<<<<< HEAD
 	HX_CSTRING("get"),
 	HX_CSTRING("remove"),
 	HX_CSTRING("iterator"),
+=======
+>>>>>>> version_remasterisée
 	String(null()) };
 
 static void sMarkStatics(HX_MARK_PARAMS) {

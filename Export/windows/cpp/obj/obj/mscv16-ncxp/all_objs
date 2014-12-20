@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 obj/mscv16-ncxp/40890d3e_ZPP_Set_ZPP_CbSet.obj
 obj/mscv16-ncxp/40890d3e_ZPP_Set_ZPP_SimpleEvent.obj
 obj/mscv16-ncxp/40890d3e_ZPP_Set_ZPP_SimpleSeg.obj
@@ -190,6 +191,8 @@ obj/mscv16-ncxp/df47f0a6_ZPP_CbSet.obj
 obj/mscv16-ncxp/df47f0a6_ZPP_Callback.obj
 obj/mscv16-ncxp/1a3b31b4_ZPP_ID.obj
 obj/mscv16-ncxp/1a3b31b4_ZPP_Const.obj
+=======
+>>>>>>> version_remasterisée
 obj/mscv16-ncxp/de19829f_FileOutput.obj
 obj/mscv16-ncxp/4367fff0_FileSystem.obj
 obj/mscv16-ncxp/b8017b47_Endian.obj
@@ -299,6 +302,7 @@ obj/mscv16-ncxp/82ea9a66_Assets.obj
 obj/mscv16-ncxp/82ea9a66_AssetCache.obj
 obj/mscv16-ncxp/82ea9a66_IAssetCache.obj
 obj/mscv16-ncxp/7ef3f972_Vector_Impl_.obj
+<<<<<<< HEAD
 obj/mscv16-ncxp/a520b7b1_ShapeDebug.obj
 obj/mscv16-ncxp/a520b7b1_Debug.obj
 obj/mscv16-ncxp/232b22f6_Space.obj
@@ -418,6 +422,12 @@ obj/mscv16-ncxp/c2d2879d_Expo.obj
 obj/mscv16-ncxp/b6411ef7_SimpleActuator.obj
 obj/mscv16-ncxp/b6411ef7_GenericActuator.obj
 obj/mscv16-ncxp/b6411ef7_IGenericActuator.obj
+=======
+obj/mscv16-ncxp/f143aafc_Region.obj
+obj/mscv16-ncxp/f143aafc_Faction.obj
+obj/mscv16-ncxp/f143aafc_Case.obj
+obj/mscv16-ncxp/f143aafc_Carte.obj
+>>>>>>> version_remasterisée
 obj/mscv16-ncxp/770e8c90_Uncompress.obj
 obj/mscv16-ncxp/770e8c90_FlushMode.obj
 obj/mscv16-ncxp/770e8c90_Compress.obj
@@ -448,9 +458,14 @@ obj/mscv16-ncxp/57588eaa_Lambda.obj
 obj/mscv16-ncxp/57588eaa_DefaultAssetLibrary.obj
 obj/mscv16-ncxp/82ea9a66_AssetLibrary.obj
 obj/mscv16-ncxp/57588eaa_Date.obj
+<<<<<<< HEAD
 obj/mscv16-ncxp/57588eaa_Case.obj
 obj/mscv16-ncxp/57588eaa_DocumentClass.obj
 obj/mscv16-ncxp/57588eaa_Main.obj
+=======
+obj/mscv16-ncxp/57588eaa_DocumentClass.obj
+obj/mscv16-ncxp/f143aafc_Krissmoon.obj
+>>>>>>> version_remasterisée
 obj/mscv16-ncxp/aa4c65b2_Sprite.obj
 obj/mscv16-ncxp/aa4c65b2_DisplayObjectContainer.obj
 obj/mscv16-ncxp/aa4c65b2_InteractiveObject.obj

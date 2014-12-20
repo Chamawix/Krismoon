@@ -1,13 +1,13 @@
 #include <hxcpp.h>
 
-#ifndef INCLUDED_Case
-#include <Case.h>
-#endif
 #ifndef INCLUDED_Std
 #include <Std.h>
 #endif
 #ifndef INCLUDED_hxMath
 #include <hxMath.h>
+#endif
+#ifndef INCLUDED_kriss_Case
+#include <kriss/Case.h>
 #endif
 #ifndef INCLUDED_openfl__v2_display_CapsStyle
 #include <openfl/_v2/display/CapsStyle.h>
@@ -42,46 +42,35 @@
 #ifndef INCLUDED_openfl__v2_events_IEventDispatcher
 #include <openfl/_v2/events/IEventDispatcher.h>
 #endif
+namespace kriss{
 
-<<<<<<< HEAD
-Void Case_obj::__construct(int colonne,int ligne,Float x,Float y,hx::Null< int >  __o_color)
-=======
 Void Case_obj::__construct(int colonne,int ligne,Float x,Float y,hx::Null< int >  __o_color,hx::Null< int >  __o_rad)
->>>>>>> version_remasterisée
 {
-HX_STACK_FRAME("Case","new",0xfb1493c2,"Case.new","Case.hx",25,0x24b699ee)
+HX_STACK_FRAME("kriss.Case","new",0x8d812bae,"kriss.Case.new","kriss/Case.hx",17,0x12ccd5a1)
 HX_STACK_THIS(this)
 HX_STACK_ARG(colonne,"colonne")
 HX_STACK_ARG(ligne,"ligne")
 HX_STACK_ARG(x,"x")
 HX_STACK_ARG(y,"y")
 HX_STACK_ARG(__o_color,"color")
-<<<<<<< HEAD
-int color = __o_color.Default(2236962);
-=======
 HX_STACK_ARG(__o_rad,"rad")
 int color = __o_color.Default(2236962);
 int rad = __o_rad.Default(20);
->>>>>>> version_remasterisée
 {
-	HX_STACK_LINE(26)
+	HX_STACK_LINE(18)
 	super::__construct();
-	HX_STACK_LINE(27)
+	HX_STACK_LINE(19)
 	this->ligne = ligne;
-	HX_STACK_LINE(28)
+	HX_STACK_LINE(20)
 	this->colonne = colonne;
-	HX_STACK_LINE(29)
+	HX_STACK_LINE(21)
 	this->posx = x;
-	HX_STACK_LINE(30)
+	HX_STACK_LINE(22)
 	this->posy = y;
-	HX_STACK_LINE(31)
+	HX_STACK_LINE(23)
 	this->couleur = color;
-	HX_STACK_LINE(32)
-<<<<<<< HEAD
-	this->groupe = (int)1;
-=======
+	HX_STACK_LINE(24)
 	this->radius = rad;
->>>>>>> version_remasterisée
 }
 ;
 	return null();
@@ -90,132 +79,66 @@ int rad = __o_rad.Default(20);
 //Case_obj::~Case_obj() { }
 
 Dynamic Case_obj::__CreateEmpty() { return  new Case_obj; }
-<<<<<<< HEAD
-hx::ObjectPtr< Case_obj > Case_obj::__new(int colonne,int ligne,Float x,Float y,hx::Null< int >  __o_color)
-{  hx::ObjectPtr< Case_obj > result = new Case_obj();
-	result->__construct(colonne,ligne,x,y,__o_color);
-=======
 hx::ObjectPtr< Case_obj > Case_obj::__new(int colonne,int ligne,Float x,Float y,hx::Null< int >  __o_color,hx::Null< int >  __o_rad)
 {  hx::ObjectPtr< Case_obj > result = new Case_obj();
 	result->__construct(colonne,ligne,x,y,__o_color,__o_rad);
->>>>>>> version_remasterisée
 	return result;}
 
 Dynamic Case_obj::__Create(hx::DynamicArray inArgs)
 {  hx::ObjectPtr< Case_obj > result = new Case_obj();
-<<<<<<< HEAD
-	result->__construct(inArgs[0],inArgs[1],inArgs[2],inArgs[3],inArgs[4]);
-	return result;}
-
-Void Case_obj::drawOneHexa( Float x,Float y,int radius){
-{
-		HX_STACK_FRAME("Case","drawOneHexa",0x01db686a,"Case.drawOneHexa","Case.hx",36,0x24b699ee)
-		HX_STACK_THIS(this)
-		HX_STACK_ARG(x,"x")
-		HX_STACK_ARG(y,"y")
-		HX_STACK_ARG(radius,"radius")
-=======
 	result->__construct(inArgs[0],inArgs[1],inArgs[2],inArgs[3],inArgs[4],inArgs[5]);
 	return result;}
 
 Void Case_obj::drawOneHexa( ){
 {
-		HX_STACK_FRAME("Case","drawOneHexa",0x01db686a,"Case.drawOneHexa","Case.hx",36,0x24b699ee)
+		HX_STACK_FRAME("kriss.Case","drawOneHexa",0xbbc3cc56,"kriss.Case.drawOneHexa","kriss/Case.hx",28,0x12ccd5a1)
 		HX_STACK_THIS(this)
->>>>>>> version_remasterisée
-		HX_STACK_LINE(37)
+		HX_STACK_LINE(29)
 		this->get_graphics()->lineStyle((int)1,(int)0,null(),null(),null(),null(),null(),null());
-		HX_STACK_LINE(38)
+		HX_STACK_LINE(30)
 		this->get_graphics()->beginFill(this->couleur,null());
-<<<<<<< HEAD
-		HX_STACK_LINE(39)
-		this->radius = radius;
-		HX_STACK_LINE(45)
+		HX_STACK_LINE(36)
 		{
-			HX_STACK_LINE(45)
+			HX_STACK_LINE(36)
 			int _g = (int)0;		HX_STACK_VAR(_g,"_g");
-			HX_STACK_LINE(45)
+			HX_STACK_LINE(36)
 			while((true)){
-				HX_STACK_LINE(45)
+				HX_STACK_LINE(36)
 				if ((!(((_g < (int)6))))){
-					HX_STACK_LINE(45)
+					HX_STACK_LINE(36)
 					break;
 				}
-				HX_STACK_LINE(45)
+				HX_STACK_LINE(36)
 				int i = (_g)++;		HX_STACK_VAR(i,"i");
-				HX_STACK_LINE(49)
+				HX_STACK_LINE(40)
 				Float angle = ((Float(((int)2 * ::Math_obj::PI)) / Float((int)6)) * ((i + 0.5)));		HX_STACK_VAR(angle,"angle");
-				HX_STACK_LINE(50)
+				HX_STACK_LINE(41)
 				Float _g1 = ::Math_obj::cos(angle);		HX_STACK_VAR(_g1,"_g1");
-				HX_STACK_LINE(50)
-				Float _g11 = (radius * _g1);		HX_STACK_VAR(_g11,"_g11");
-				HX_STACK_LINE(50)
-				Float x_i = (x + _g11);		HX_STACK_VAR(x_i,"x_i");
-				HX_STACK_LINE(52)
-				Float _g2 = ::Math_obj::sin(angle);		HX_STACK_VAR(_g2,"_g2");
-				HX_STACK_LINE(52)
-				Float _g3 = (radius * _g2);		HX_STACK_VAR(_g3,"_g3");
-				HX_STACK_LINE(52)
-				Float y_i = (y + _g3);		HX_STACK_VAR(y_i,"y_i");
-				HX_STACK_LINE(56)
-				if (((i == (int)0))){
-					HX_STACK_LINE(60)
-					int _g4 = ::Std_obj::_int(x_i);		HX_STACK_VAR(_g4,"_g4");
-					HX_STACK_LINE(60)
-					int _g5 = ::Std_obj::_int(y_i);		HX_STACK_VAR(_g5,"_g5");
-					HX_STACK_LINE(60)
-					this->get_graphics()->moveTo(_g4,_g5);
-				}
-				else{
-					HX_STACK_LINE(63)
-					int _g6 = ::Std_obj::_int(x_i);		HX_STACK_VAR(_g6,"_g6");
-					HX_STACK_LINE(63)
-					int _g7 = ::Std_obj::_int(y_i);		HX_STACK_VAR(_g7,"_g7");
-					HX_STACK_LINE(63)
-=======
-		HX_STACK_LINE(44)
-		{
-			HX_STACK_LINE(44)
-			int _g = (int)0;		HX_STACK_VAR(_g,"_g");
-			HX_STACK_LINE(44)
-			while((true)){
-				HX_STACK_LINE(44)
-				if ((!(((_g < (int)6))))){
-					HX_STACK_LINE(44)
-					break;
-				}
-				HX_STACK_LINE(44)
-				int i = (_g)++;		HX_STACK_VAR(i,"i");
-				HX_STACK_LINE(48)
-				Float angle = ((Float(((int)2 * ::Math_obj::PI)) / Float((int)6)) * ((i + 0.5)));		HX_STACK_VAR(angle,"angle");
-				HX_STACK_LINE(49)
-				Float _g1 = ::Math_obj::cos(angle);		HX_STACK_VAR(_g1,"_g1");
-				HX_STACK_LINE(49)
+				HX_STACK_LINE(41)
 				Float _g11 = (this->radius * _g1);		HX_STACK_VAR(_g11,"_g11");
-				HX_STACK_LINE(49)
+				HX_STACK_LINE(41)
 				Float x_i = (this->posx + _g11);		HX_STACK_VAR(x_i,"x_i");
-				HX_STACK_LINE(51)
+				HX_STACK_LINE(43)
 				Float _g2 = ::Math_obj::sin(angle);		HX_STACK_VAR(_g2,"_g2");
-				HX_STACK_LINE(51)
+				HX_STACK_LINE(43)
 				Float _g3 = (this->radius * _g2);		HX_STACK_VAR(_g3,"_g3");
-				HX_STACK_LINE(51)
+				HX_STACK_LINE(43)
 				Float y_i = (this->posy + _g3);		HX_STACK_VAR(y_i,"y_i");
-				HX_STACK_LINE(55)
+				HX_STACK_LINE(47)
 				if (((i == (int)0))){
-					HX_STACK_LINE(59)
+					HX_STACK_LINE(48)
 					int _g4 = ::Std_obj::_int(x_i);		HX_STACK_VAR(_g4,"_g4");
-					HX_STACK_LINE(59)
+					HX_STACK_LINE(48)
 					int _g5 = ::Std_obj::_int(y_i);		HX_STACK_VAR(_g5,"_g5");
-					HX_STACK_LINE(59)
+					HX_STACK_LINE(48)
 					this->get_graphics()->moveTo(_g4,_g5);
 				}
 				else{
-					HX_STACK_LINE(62)
+					HX_STACK_LINE(51)
 					int _g6 = ::Std_obj::_int(x_i);		HX_STACK_VAR(_g6,"_g6");
-					HX_STACK_LINE(62)
+					HX_STACK_LINE(51)
 					int _g7 = ::Std_obj::_int(y_i);		HX_STACK_VAR(_g7,"_g7");
-					HX_STACK_LINE(62)
->>>>>>> version_remasterisée
+					HX_STACK_LINE(51)
 					this->get_graphics()->lineTo(_g6,_g7);
 				}
 			}
@@ -225,27 +148,18 @@ return null();
 }
 
 
-<<<<<<< HEAD
-HX_DEFINE_DYNAMIC_FUNC3(Case_obj,drawOneHexa,(void))
-
-Void Case_obj::deleteHexa( ){
-{
-		HX_STACK_FRAME("Case","deleteHexa",0xc7d567cf,"Case.deleteHexa","Case.hx",70,0x24b699ee)
-		HX_STACK_THIS(this)
-		HX_STACK_LINE(70)
-=======
 HX_DEFINE_DYNAMIC_FUNC0(Case_obj,drawOneHexa,(void))
 
 Void Case_obj::updateHexa( int color){
 {
-		HX_STACK_FRAME("Case","updateHexa",0x2d3d74ad,"Case.updateHexa","Case.hx",68,0x24b699ee)
+		HX_STACK_FRAME("kriss.Case","updateHexa",0x7c22f241,"kriss.Case.updateHexa","kriss/Case.hx",57,0x12ccd5a1)
 		HX_STACK_THIS(this)
 		HX_STACK_ARG(color,"color")
-		HX_STACK_LINE(69)
+		HX_STACK_LINE(58)
 		this->get_graphics()->clear();
-		HX_STACK_LINE(70)
+		HX_STACK_LINE(59)
 		this->couleur = color;
-		HX_STACK_LINE(71)
+		HX_STACK_LINE(60)
 		this->drawOneHexa();
 	}
 return null();
@@ -256,10 +170,9 @@ HX_DEFINE_DYNAMIC_FUNC1(Case_obj,updateHexa,(void))
 
 Void Case_obj::deleteHexa( ){
 {
-		HX_STACK_FRAME("Case","deleteHexa",0xc7d567cf,"Case.deleteHexa","Case.hx",76,0x24b699ee)
+		HX_STACK_FRAME("kriss.Case","deleteHexa",0x16bae563,"kriss.Case.deleteHexa","kriss/Case.hx",65,0x12ccd5a1)
 		HX_STACK_THIS(this)
-		HX_STACK_LINE(76)
->>>>>>> version_remasterisée
+		HX_STACK_LINE(65)
 		this->get_graphics()->clear();
 	}
 return null();
@@ -292,10 +205,7 @@ Dynamic Case_obj::__Field(const ::String &inName,bool inCallProp)
 		if (HX_FIELD_EQ(inName,"couleur") ) { return couleur; }
 		break;
 	case 10:
-<<<<<<< HEAD
-=======
 		if (HX_FIELD_EQ(inName,"updateHexa") ) { return updateHexa_dyn(); }
->>>>>>> version_remasterisée
 		if (HX_FIELD_EQ(inName,"deleteHexa") ) { return deleteHexa_dyn(); }
 		break;
 	case 11:
@@ -362,10 +272,7 @@ static ::String sMemberFields[] = {
 	HX_CSTRING("posy"),
 	HX_CSTRING("radius"),
 	HX_CSTRING("drawOneHexa"),
-<<<<<<< HEAD
-=======
 	HX_CSTRING("updateHexa"),
->>>>>>> version_remasterisée
 	HX_CSTRING("deleteHexa"),
 	String(null()) };
 
@@ -384,7 +291,7 @@ Class Case_obj::__mClass;
 
 void Case_obj::__register()
 {
-	hx::Static(__mClass) = hx::RegisterClass(HX_CSTRING("Case"), hx::TCanCast< Case_obj> ,sStaticFields,sMemberFields,
+	hx::Static(__mClass) = hx::RegisterClass(HX_CSTRING("kriss.Case"), hx::TCanCast< Case_obj> ,sStaticFields,sMemberFields,
 	&__CreateEmpty, &__Create,
 	&super::__SGetClass(), 0, sMarkStatics
 #ifdef HXCPP_VISIT_ALLOCS
@@ -400,3 +307,4 @@ void Case_obj::__boot()
 {
 }
 
+} // end namespace kriss

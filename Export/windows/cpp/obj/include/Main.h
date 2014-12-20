@@ -6,11 +6,17 @@
 #endif
 
 #include <openfl/_v2/display/Sprite.h>
+<<<<<<< HEAD
 HX_DECLARE_CLASS0(Case)
 HX_DECLARE_CLASS0(Main)
 HX_DECLARE_CLASS2(nape,space,Space)
 HX_DECLARE_CLASS2(nape,util,Debug)
 HX_DECLARE_CLASS2(nape,util,ShapeDebug)
+=======
+HX_DECLARE_CLASS0(Faction)
+HX_DECLARE_CLASS0(Main)
+HX_DECLARE_CLASS0(Region)
+>>>>>>> version_remasterisée
 HX_DECLARE_CLASS3(openfl,_v2,display,DisplayObject)
 HX_DECLARE_CLASS3(openfl,_v2,display,DisplayObjectContainer)
 HX_DECLARE_CLASS3(openfl,_v2,display,IBitmapDrawable)
@@ -44,6 +50,7 @@ class HXCPP_CLASS_ATTRIBUTES  Main_obj : public ::openfl::_v2::display::Sprite_o
 		void __Visit(HX_VISIT_PARAMS);
 		::String __ToString() const { return HX_CSTRING("Main"); }
 
+<<<<<<< HEAD
 		Array< ::Dynamic > hexas;
 		::nape::space::Space space;
 		::nape::util::ShapeDebug debug;
@@ -52,12 +59,25 @@ class HXCPP_CLASS_ATTRIBUTES  Main_obj : public ::openfl::_v2::display::Sprite_o
 
 		virtual Void drawHexagones( int mapx,int mapy,int w,int h);
 		Dynamic drawHexagones_dyn();
+=======
+		Array< ::Dynamic > factions;
+		virtual Void init( );
+		Dynamic init_dyn();
+
+		virtual Void drawMap( int mapx,int mapy,int w,int h);
+		Dynamic drawMap_dyn();
+>>>>>>> version_remasterisée
 
 		virtual Void event_changeColor( ::openfl::_v2::events::KeyboardEvent e);
 		Dynamic event_changeColor_dyn();
 
 		static int NUM_COLUMNS;
 		static int NUM_ROWS;
+<<<<<<< HEAD
+=======
+		static ::Faction factionNeutre;
+		static Array< ::Dynamic > regions;
+>>>>>>> version_remasterisée
 };
 
 

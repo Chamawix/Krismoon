@@ -20,5 +20,9 @@
 --remap flash:openfl
 -cpp Export/windows/cpp/obj
 -cp Export/windows/cpp/haxe
+<<<<<<< HEAD
 --macro keep("Main")
+=======
+--macro keep("kriss.Krissmoon")
+>>>>>>> version_remasterisée
 -debug

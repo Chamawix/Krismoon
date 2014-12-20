@@ -87,19 +87,19 @@ class ApplicationMain {
 			depthBuffer: false,
 			fps: Std.int (60),
 			fullscreen: false,
-			height: Std.int (0),
+			height: Std.int (400),
 			orientation: "",
 			resizable: true,
 			stencilBuffer: false,
 			title: "KrisMoon",
 			vsync: false,
-			width: Std.int (0),
+			width: Std.int (640),
 			
 		}
 		
 		#if js
 		#if munit
-		flash.Lib.embed (null, 0, 0, "FFFFFF");
+		flash.Lib.embed (null, 640, 400, "FFFFFF");
 		#end
 		#else
 		create ();
@@ -115,7 +115,7 @@ class ApplicationMain {
 		
 		var hasMain = false;
 		
-		for (methodName in Type.getClassFields (Main)) {
+		for (methodName in Type.getClassFields (kriss.Krissmoon)) {
 			
 			if (methodName == "main") {
 				
@@ -128,7 +128,7 @@ class ApplicationMain {
 		
 		if (hasMain) {
 			
-			Reflect.callMethod (Main, Reflect.field (Main, "main"), []);
+			Reflect.callMethod (kriss.Krissmoon, Reflect.field (kriss.Krissmoon, "main"), []);
 			
 		} else {
 			
@@ -164,7 +164,7 @@ class ApplicationMain {
 
 #if flash @:build(DocumentClass.buildFlash())
 #else @:build(DocumentClass.build()) #end
-@:keep class DocumentClass extends Main {}
+@:keep class DocumentClass extends kriss.Krissmoon {}
 
 
 #else

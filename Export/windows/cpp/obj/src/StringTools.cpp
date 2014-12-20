@@ -64,6 +64,7 @@ bool StringTools_obj::startsWith( ::String s,::String start){
 
 STATIC_HX_DEFINE_DYNAMIC_FUNC2(StringTools_obj,startsWith,return )
 
+<<<<<<< HEAD
 ::String StringTools_obj::hex( int n,Dynamic digits){
 	HX_STACK_FRAME("StringTools","hex",0xd91debd7,"StringTools.hex","C:\\HaxeToolkit\\haxe\\std/StringTools.hx",313,0xb9dbeb2d)
 	HX_STACK_ARG(n,"n")
@@ -108,6 +109,8 @@ STATIC_HX_DEFINE_DYNAMIC_FUNC2(StringTools_obj,startsWith,return )
 
 STATIC_HX_DEFINE_DYNAMIC_FUNC2(StringTools_obj,hex,return )
 
+=======
+>>>>>>> version_remasterisée
 
 StringTools_obj::StringTools_obj()
 {
@@ -116,9 +119,12 @@ StringTools_obj::StringTools_obj()
 Dynamic StringTools_obj::__Field(const ::String &inName,bool inCallProp)
 {
 	switch(inName.length) {
+<<<<<<< HEAD
 	case 3:
 		if (HX_FIELD_EQ(inName,"hex") ) { return hex_dyn(); }
 		break;
+=======
+>>>>>>> version_remasterisée
 	case 9:
 		if (HX_FIELD_EQ(inName,"urlEncode") ) { return urlEncode_dyn(); }
 		if (HX_FIELD_EQ(inName,"urlDecode") ) { return urlDecode_dyn(); }
@@ -143,7 +149,10 @@ static ::String sStaticFields[] = {
 	HX_CSTRING("urlEncode"),
 	HX_CSTRING("urlDecode"),
 	HX_CSTRING("startsWith"),
+<<<<<<< HEAD
 	HX_CSTRING("hex"),
+=======
+>>>>>>> version_remasterisée
 	String(null()) };
 
 #if HXCPP_SCRIPTABLE

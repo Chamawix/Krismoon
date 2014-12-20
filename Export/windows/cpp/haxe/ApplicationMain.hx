@@ -82,7 +82,11 @@ class ApplicationMain {
 				
 				var hasMain = false;
 				
+<<<<<<< HEAD
 				for (methodName in Type.getClassFields (Main)) {
+=======
+				for (methodName in Type.getClassFields (kriss.Krissmoon)) {
+>>>>>>> version_remasterisée
 					
 					if (methodName == "main") {
 						
@@ -95,7 +99,11 @@ class ApplicationMain {
 					
 				if (hasMain) {
 					
+<<<<<<< HEAD
 					Reflect.callMethod (Main, Reflect.field (Main, "main"), []);
+=======
+					Reflect.callMethod (kriss.Krissmoon, Reflect.field (kriss.Krissmoon, "main"), []);
+>>>>>>> version_remasterisée
 					
 				} else {
 					
@@ -197,7 +205,11 @@ class ApplicationMain {
 
 
 @:build(DocumentClass.build())
+<<<<<<< HEAD
 @:keep class DocumentClass extends Main {}
+=======
+@:keep class DocumentClass extends kriss.Krissmoon {}
+>>>>>>> version_remasterisée
 
 
 #if mobile
@@ -316,7 +328,11 @@ class ApplicationMain {
 			#end
 			
 			var hasMain = false;
+<<<<<<< HEAD
 			for (methodName in Type.getClassFields (Main)) {
+=======
+			for (methodName in Type.getClassFields (kriss.Krissmoon)) {
+>>>>>>> version_remasterisée
 				if (methodName == "main") {
 					hasMain = true;
 					break;
@@ -324,9 +340,15 @@ class ApplicationMain {
 			}
 			
 			if (hasMain) {
+<<<<<<< HEAD
 				Reflect.callMethod (Main, Reflect.field (Main, "main"), []);
 			}else {
 				var instance = Type.createInstance (Main, []);
+=======
+				Reflect.callMethod (kriss.Krissmoon, Reflect.field (kriss.Krissmoon, "main"), []);
+			}else {
+				var instance = Type.createInstance (kriss.Krissmoon, []);
+>>>>>>> version_remasterisée
 			}
 			
 			if (autoShowFrame) {
@@ -355,7 +377,11 @@ class ApplicationMain {
 #else
 
 
+<<<<<<< HEAD
 import Main;
+=======
+import kriss.Krissmoon;
+>>>>>>> version_remasterisée
 
 class ApplicationMain {
 	

@@ -2,6 +2,7 @@
 <set name="HXCPP_API_LEVEL" value="311" />
 <files id="haxe">
 <compilerflag value="-Iinclude"/>
+<<<<<<< HEAD
   <file name="src/zpp_nape/util/ZPP_Set_ZPP_CbSet.cpp">
    <depend name="include/zpp_nape/callbacks/ZPP_CbSet.h"/>
    <depend name="include/zpp_nape/util/ZPP_Set_ZPP_CbSet.h"/>
@@ -1934,6 +1935,8 @@
   <file name="src/zpp_nape/ZPP_Const.cpp">
    <depend name="include/zpp_nape/ZPP_Const.h"/>
   </file>
+=======
+>>>>>>> version_remasterisée
   <file name="src/sys/io/FileOutput.cpp">
    <depend name="include/cpp/Lib.h"/>
    <depend name="include/haxe/io/Bytes.h"/>
@@ -2719,6 +2722,7 @@
   <file name="src/openfl/_Vector/Vector_Impl_.cpp">
    <depend name="include/openfl/_Vector/Vector_Impl_.h"/>
   </file>
+<<<<<<< HEAD
   <file name="src/nape/util/ShapeDebug.cpp">
    <depend name="include/Std.h"/>
    <depend name="include/nape/constraint/Constraint.h"/>
@@ -4165,10 +4169,55 @@
    <depend name="include/motion/actuators/SimpleActuator.h"/>
    <depend name="include/motion/easing/IEasing.h"/>
    <depend name="include/openfl/_v2/Lib.h"/>
+=======
+  <file name="src/kriss/Region.cpp">
+   <depend name="include/IMap.h"/>
+   <depend name="include/haxe/ds/StringMap.h"/>
+   <depend name="include/kriss/Carte.h"/>
+   <depend name="include/kriss/Case.h"/>
+   <depend name="include/kriss/Faction.h"/>
+   <depend name="include/kriss/Krissmoon.h"/>
+   <depend name="include/kriss/Region.h"/>
    <depend name="include/openfl/_v2/display/DisplayObject.h"/>
    <depend name="include/openfl/_v2/display/DisplayObjectContainer.h"/>
    <depend name="include/openfl/_v2/display/IBitmapDrawable.h"/>
    <depend name="include/openfl/_v2/display/InteractiveObject.h"/>
+   <depend name="include/openfl/_v2/display/Sprite.h"/>
+   <depend name="include/openfl/_v2/events/EventDispatcher.h"/>
+   <depend name="include/openfl/_v2/events/IEventDispatcher.h"/>
+  </file>
+  <file name="src/kriss/Faction.cpp">
+   <depend name="include/Std.h"/>
+   <depend name="include/kriss/Faction.h"/>
+   <depend name="include/kriss/Region.h"/>
+  </file>
+  <file name="src/kriss/Case.cpp">
+   <depend name="include/Std.h"/>
+   <depend name="include/kriss/Case.h"/>
+   <depend name="include/openfl/_v2/display/CapsStyle.h"/>
+   <depend name="include/openfl/_v2/display/DisplayObject.h"/>
+   <depend name="include/openfl/_v2/display/DisplayObjectContainer.h"/>
+   <depend name="include/openfl/_v2/display/Graphics.h"/>
+   <depend name="include/openfl/_v2/display/IBitmapDrawable.h"/>
+   <depend name="include/openfl/_v2/display/InteractiveObject.h"/>
+   <depend name="include/openfl/_v2/display/JointStyle.h"/>
+   <depend name="include/openfl/_v2/display/LineScaleMode.h"/>
+   <depend name="include/openfl/_v2/display/Sprite.h"/>
+   <depend name="include/openfl/_v2/events/EventDispatcher.h"/>
+   <depend name="include/openfl/_v2/events/IEventDispatcher.h"/>
+  </file>
+  <file name="src/kriss/Carte.cpp">
+   <depend name="include/Std.h"/>
+   <depend name="include/kriss/Carte.h"/>
+   <depend name="include/kriss/Case.h"/>
+   <depend name="include/kriss/Faction.h"/>
+   <depend name="include/kriss/Region.h"/>
+>>>>>>> version_remasterisée
+   <depend name="include/openfl/_v2/display/DisplayObject.h"/>
+   <depend name="include/openfl/_v2/display/DisplayObjectContainer.h"/>
+   <depend name="include/openfl/_v2/display/IBitmapDrawable.h"/>
+   <depend name="include/openfl/_v2/display/InteractiveObject.h"/>
+<<<<<<< HEAD
    <depend name="include/openfl/_v2/display/MovieClip.h"/>
    <depend name="include/openfl/_v2/display/Sprite.h"/>
    <depend name="include/openfl/_v2/display/Stage.h"/>
@@ -4187,6 +4236,12 @@
    <depend name="include/motion/actuators/IGenericActuator.h"/>
    <depend name="include/motion/easing/IEasing.h"/>
   </file>
+=======
+   <depend name="include/openfl/_v2/display/Sprite.h"/>
+   <depend name="include/openfl/_v2/events/EventDispatcher.h"/>
+   <depend name="include/openfl/_v2/events/IEventDispatcher.h"/>
+  </file>
+>>>>>>> version_remasterisée
   <file name="src/haxe/zip/Uncompress.cpp">
    <depend name="include/cpp/Lib.h"/>
    <depend name="include/haxe/io/Bytes.h"/>
@@ -4357,6 +4412,7 @@
    <depend name="include/Date.h"/>
    <depend name="include/Std.h"/>
   </file>
+<<<<<<< HEAD
   <file name="src/Case.cpp">
    <depend name="include/Case.h"/>
    <depend name="include/Std.h"/>
@@ -4375,6 +4431,11 @@
   <file name="src/DocumentClass.cpp">
    <depend name="include/DocumentClass.h"/>
    <depend name="include/Main.h"/>
+=======
+  <file name="src/DocumentClass.cpp">
+   <depend name="include/DocumentClass.h"/>
+   <depend name="include/kriss/Krissmoon.h"/>
+>>>>>>> version_remasterisée
    <depend name="include/openfl/_v2/Lib.h"/>
    <depend name="include/openfl/_v2/display/DisplayObject.h"/>
    <depend name="include/openfl/_v2/display/DisplayObjectContainer.h"/>
@@ -4386,6 +4447,7 @@
    <depend name="include/openfl/_v2/events/EventDispatcher.h"/>
    <depend name="include/openfl/_v2/events/IEventDispatcher.h"/>
   </file>
+<<<<<<< HEAD
   <file name="src/Main.cpp">
    <depend name="include/Case.h"/>
    <depend name="include/Main.h"/>
@@ -4395,6 +4457,12 @@
    <depend name="include/nape/space/Space.h"/>
    <depend name="include/nape/util/Debug.h"/>
    <depend name="include/nape/util/ShapeDebug.h"/>
+=======
+  <file name="src/kriss/Krissmoon.cpp">
+   <depend name="include/kriss/Carte.h"/>
+   <depend name="include/kriss/Faction.h"/>
+   <depend name="include/kriss/Krissmoon.h"/>
+>>>>>>> version_remasterisée
    <depend name="include/openfl/_v2/display/DisplayObject.h"/>
    <depend name="include/openfl/_v2/display/DisplayObjectContainer.h"/>
    <depend name="include/openfl/_v2/display/IBitmapDrawable.h"/>
@@ -4580,12 +4648,19 @@
   <file name="src/ApplicationMain.cpp">
    <depend name="include/ApplicationMain.h"/>
    <depend name="include/DocumentClass.h"/>
+<<<<<<< HEAD
    <depend name="include/Main.h"/>
+=======
+>>>>>>> version_remasterisée
    <depend name="include/Reflect.h"/>
    <depend name="include/Std.h"/>
    <depend name="include/Sys.h"/>
    <depend name="include/Type.h"/>
    <depend name="include/haxe/io/Path.h"/>
+<<<<<<< HEAD
+=======
+   <depend name="include/kriss/Krissmoon.h"/>
+>>>>>>> version_remasterisée
    <depend name="include/openfl/_v2/Assets.h"/>
    <depend name="include/openfl/_v2/Lib.h"/>
    <depend name="include/openfl/_v2/display/BitmapData.h"/>

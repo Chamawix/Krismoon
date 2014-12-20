@@ -1,5 +1,6 @@
 #include <hxcpp.h>
 
+<<<<<<< HEAD
 #include <zpp_nape/util/ZPP_Set_ZPP_CbSet.h>
 #include <zpp_nape/util/ZPP_Set_ZPP_SimpleEvent.h>
 #include <zpp_nape/util/ZPP_Set_ZPP_SimpleSeg.h>
@@ -192,6 +193,8 @@
 #include <zpp_nape/callbacks/ZPP_Callback.h>
 #include <zpp_nape/ZPP_ID.h>
 #include <zpp_nape/ZPP_Const.h>
+=======
+>>>>>>> version_remasterisée
 #include <sys/io/FileOutput.h>
 #include <sys/FileSystem.h>
 #include <openfl/utils/Endian.h>
@@ -301,6 +304,7 @@
 #include <openfl/_v2/AssetCache.h>
 #include <openfl/_v2/IAssetCache.h>
 #include <openfl/_Vector/Vector_Impl_.h>
+<<<<<<< HEAD
 #include <nape/util/ShapeDebug.h>
 #include <nape/util/Debug.h>
 #include <nape/space/Space.h>
@@ -420,6 +424,12 @@
 #include <motion/actuators/SimpleActuator.h>
 #include <motion/actuators/GenericActuator.h>
 #include <motion/actuators/IGenericActuator.h>
+=======
+#include <kriss/Region.h>
+#include <kriss/Faction.h>
+#include <kriss/Case.h>
+#include <kriss/Carte.h>
+>>>>>>> version_remasterisée
 #include <haxe/zip/Uncompress.h>
 #include <haxe/zip/FlushMode.h>
 #include <haxe/zip/Compress.h>
@@ -450,9 +460,14 @@
 #include <DefaultAssetLibrary.h>
 #include <openfl/_v2/AssetLibrary.h>
 #include <Date.h>
+<<<<<<< HEAD
 #include <Case.h>
 #include <DocumentClass.h>
 #include <Main.h>
+=======
+#include <DocumentClass.h>
+#include <kriss/Krissmoon.h>
+>>>>>>> version_remasterisée
 #include <openfl/_v2/display/Sprite.h>
 #include <openfl/_v2/display/DisplayObjectContainer.h>
 #include <openfl/_v2/display/InteractiveObject.h>
@@ -478,6 +493,7 @@ void __boot_all()
 {
 __files__boot();
 hx::RegisterResources( hx::GetResources() );
+<<<<<<< HEAD
 ::zpp_nape::util::ZPP_Set_ZPP_CbSet_obj::__register();
 ::zpp_nape::util::ZPP_Set_ZPP_SimpleEvent_obj::__register();
 ::zpp_nape::util::ZPP_Set_ZPP_SimpleSeg_obj::__register();
@@ -670,6 +686,8 @@ hx::RegisterResources( hx::GetResources() );
 ::zpp_nape::callbacks::ZPP_Callback_obj::__register();
 ::zpp_nape::ZPP_ID_obj::__register();
 ::zpp_nape::ZPP_Const_obj::__register();
+=======
+>>>>>>> version_remasterisée
 ::sys::io::FileOutput_obj::__register();
 ::sys::FileSystem_obj::__register();
 ::openfl::utils::Endian_obj::__register();
@@ -779,6 +797,7 @@ hx::RegisterResources( hx::GetResources() );
 ::openfl::_v2::AssetCache_obj::__register();
 ::openfl::_v2::IAssetCache_obj::__register();
 ::openfl::_Vector::Vector_Impl__obj::__register();
+<<<<<<< HEAD
 ::nape::util::ShapeDebug_obj::__register();
 ::nape::util::Debug_obj::__register();
 ::nape::space::Space_obj::__register();
@@ -898,6 +917,12 @@ hx::RegisterResources( hx::GetResources() );
 ::motion::actuators::SimpleActuator_obj::__register();
 ::motion::actuators::GenericActuator_obj::__register();
 ::motion::actuators::IGenericActuator_obj::__register();
+=======
+::kriss::Region_obj::__register();
+::kriss::Faction_obj::__register();
+::kriss::Case_obj::__register();
+::kriss::Carte_obj::__register();
+>>>>>>> version_remasterisée
 ::haxe::zip::Uncompress_obj::__register();
 ::haxe::zip::FlushMode_obj::__register();
 ::haxe::zip::Compress_obj::__register();
@@ -928,9 +953,14 @@ hx::RegisterResources( hx::GetResources() );
 ::DefaultAssetLibrary_obj::__register();
 ::openfl::_v2::AssetLibrary_obj::__register();
 ::Date_obj::__register();
+<<<<<<< HEAD
 ::Case_obj::__register();
 ::DocumentClass_obj::__register();
 ::Main_obj::__register();
+=======
+::DocumentClass_obj::__register();
+::kriss::Krissmoon_obj::__register();
+>>>>>>> version_remasterisée
 ::openfl::_v2::display::Sprite_obj::__register();
 ::openfl::_v2::display::DisplayObjectContainer_obj::__register();
 ::openfl::_v2::display::InteractiveObject_obj::__register();
@@ -972,9 +1002,14 @@ hx::RegisterResources( hx::GetResources() );
 ::openfl::_v2::display::InteractiveObject_obj::__boot();
 ::openfl::_v2::display::DisplayObjectContainer_obj::__boot();
 ::openfl::_v2::display::Sprite_obj::__boot();
+<<<<<<< HEAD
 ::Main_obj::__boot();
 ::DocumentClass_obj::__boot();
 ::Case_obj::__boot();
+=======
+::kriss::Krissmoon_obj::__boot();
+::DocumentClass_obj::__boot();
+>>>>>>> version_remasterisée
 ::Date_obj::__boot();
 ::openfl::_v2::AssetLibrary_obj::__boot();
 ::DefaultAssetLibrary_obj::__boot();
@@ -1001,6 +1036,7 @@ hx::RegisterResources( hx::GetResources() );
 ::haxe::zip::Compress_obj::__boot();
 ::haxe::zip::FlushMode_obj::__boot();
 ::haxe::zip::Uncompress_obj::__boot();
+<<<<<<< HEAD
 ::motion::actuators::IGenericActuator_obj::__boot();
 ::motion::actuators::GenericActuator_obj::__boot();
 ::motion::actuators::SimpleActuator_obj::__boot();
@@ -1120,6 +1156,12 @@ hx::RegisterResources( hx::GetResources() );
 ::nape::space::Space_obj::__boot();
 ::nape::util::Debug_obj::__boot();
 ::nape::util::ShapeDebug_obj::__boot();
+=======
+::kriss::Carte_obj::__boot();
+::kriss::Case_obj::__boot();
+::kriss::Faction_obj::__boot();
+::kriss::Region_obj::__boot();
+>>>>>>> version_remasterisée
 ::openfl::_Vector::Vector_Impl__obj::__boot();
 ::openfl::_v2::IAssetCache_obj::__boot();
 ::openfl::_v2::AssetCache_obj::__boot();
@@ -1229,6 +1271,7 @@ hx::RegisterResources( hx::GetResources() );
 ::openfl::utils::Endian_obj::__boot();
 ::sys::FileSystem_obj::__boot();
 ::sys::io::FileOutput_obj::__boot();
+<<<<<<< HEAD
 ::zpp_nape::ZPP_Const_obj::__boot();
 ::zpp_nape::ZPP_ID_obj::__boot();
 ::zpp_nape::callbacks::ZPP_Callback_obj::__boot();
@@ -1421,5 +1464,7 @@ hx::RegisterResources( hx::GetResources() );
 ::zpp_nape::util::ZPP_Set_ZPP_SimpleSeg_obj::__boot();
 ::zpp_nape::util::ZPP_Set_ZPP_SimpleEvent_obj::__boot();
 ::zpp_nape::util::ZPP_Set_ZPP_CbSet_obj::__boot();
+=======
+>>>>>>> version_remasterisée
 }
 
