@@ -6,6 +6,11 @@ import openfl.events.KeyboardEvent;
 import openfl.geom.ColorTransform;
 import openfl.display.Sprite;
 
+/*
+* La carte, objet graphique contenant l'ensemble des cases, des regions et des factions. C'est l'objet
+* princial, dans lequel tout est géré en mémoire.  
+*/
+
 class Carte extends Sprite {
 
 	private var columns: Int;
@@ -15,6 +20,12 @@ class Carte extends Sprite {
 	private var factions = new Array <Faction> ();
 	private var w:Float;
 	private var h: Float;
+	private inline var radius = 20;
+
+	/*
+	* Constructeur, construit a partir d'une taille en pixel (height et width), et un ensemble
+	* de ligne et de colonnes.
+	*/
 
 	public function new(width : Float, height: Float, nrows:Int, ncolumns:Int) {
 		super();
@@ -74,7 +85,6 @@ class Carte extends Sprite {
 	*/
 	private function drawMap(mapx:Int, mapy:Int, w:Int, h:Int):Void {
 		
-		var radius = 20;
 		var xhexa:Float;
 		var yhexa:Float;
 

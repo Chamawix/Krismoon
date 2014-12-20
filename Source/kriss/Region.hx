@@ -5,7 +5,10 @@ import haxe.ds.StringMap;
 import flash.Lib;
 import openfl.geom.ColorTransform;
 
-
+/*
+*Ajout d'une énumération de type Point, décrivant la position sur la grille de la région
+*
+*/
 	typedef Point ={
 	x:Int
 	,y:Int
@@ -21,6 +24,10 @@ class Region {
 	private var regionEnnemie = new Array <String> ();
 
 
+/*
+* Constucteur de Région, il a besoin d'une case, et d'une faction. La case sera l'objet graphique, tandis que la faction
+* sera une interaction avec les données. 
+*/
 
 	public function new(h:Case,nouvelleFaction:Faction){
 
@@ -48,6 +55,12 @@ class Region {
 		
 	}
 
+/*
+* Change la faction. 
+* Interragit directement avec les factions créées, en supprimant la région de la liste des territoires
+* de la faction qui perd la région, et ajoute la région dans le territoire qui gagne cette région
+*/
+
 	public function changement_Faction(nouvelleFaction:Faction):Void{
 		
 		//retirer la région de la faction
@@ -62,6 +75,13 @@ class Region {
 		typeVoisins();
 
 	}
+
+	/*
+	* Fonction interne (private), qui permet de calculer les voisins de la région, qui seront statiques ici (les régions ne sont pas destructibles)
+	* Elle est appelée dans le constructeur, pour remplir une string map de type :
+	* <"Orientation", "Coordonnées de type Poit">, par exemple : "SO", "1,1", correspond au voisin Sud-Ouest, de coordonnée 1,1
+	* Du fait des cases en hexagone, il y a un decalage selon que la ligne est paire ou impaire (Le if/else du début)
+	*/
 
 	private function voisins():StringMap <Point>{
 
@@ -182,14 +202,27 @@ class Region {
 		return result;
 	}
 
+	/*
+	* Retourne la liste de voisins
+	*/
+
 	public function getVoisins():Void {
 		/*#if js
 		js.Lib.alert(listeVoisins + "\n Voisins alliés" + regionAllie +"\n Voisins Ennemies" + regionEnnemie);
 		#end*/
 	}
+
+	/* 
+	* Retourne la faction actuelle 
+	*/
+
 	public function getFaction():Faction{
 		return faction;
 	}
+
+	/*
+	* Détermine le type du voisin, si c'est une case ennemie ou alliée. 
+	*/
 
 	public function typeVoisins():Void {
 		var iter = listeVoisins.keys();
@@ -213,6 +246,9 @@ class Region {
 
 	}
 
+	/*
+	* Renvoit les regions voisinnes ennemies ou alliées
+	*/
 
 	public function getEnnemie():Array <String> {
 		return regionEnnemie;
@@ -220,6 +256,10 @@ class Region {
 	public function getAllie(): Array <String> {
 		return regionAllie;
 	}
+
+	/*
+	* Effectue une attaque sur une zone voisine. 
+	*/
 
 	public function attaqueZone( orientation:String){
 		var p = listeVoisins.get(orientation);
