@@ -20,7 +20,7 @@ class Carte extends Sprite {
 	private var factions = new Array <Faction> ();
 	private var w:Float;
 	private var h: Float;
-	private inline var radius = 20;
+	private static inline var radius = 20;
 
 	/*
 	* Constructeur, construit a partir d'une taille en pixel (height et width), et un ensemble

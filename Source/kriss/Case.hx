@@ -16,8 +16,8 @@ class Case extends Sprite {
 	private var posx:Float;
 	private var posy:Float;
 	private var radius:Int;
-	private inline var lineStyle = 0x000000;
-	private inline var lineWidth = 1;
+	private static inline var lineStyle = 0x000000;
+	private static inline var lineWidth = 1;
 
 	/*
 	* Constructeur, a base de positions, et taille et de couleur. 
@@ -85,5 +85,7 @@ class Case extends Sprite {
 	public function deleteHexa(){
 		graphics.clear();
 	}
+	public function getLigne():Int{ return ligne;}
+	public function getColonne():Int {return colonne;}
 
 }

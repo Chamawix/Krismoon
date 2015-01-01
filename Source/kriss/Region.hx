@@ -86,42 +86,42 @@ class Region {
 	private function voisins():StringMap <Point>{
 
 		var result= new StringMap <Point> ();
-		var p: Point = {x:hexa.ligne, y:hexa.colonne};
+		var p: Point = {x:hexa.getLigne(), y:hexa.getColonne()};
 		var q:Int;
 		var r:Int;
-		if (hexa.colonne==8) {
+		if (hexa.getColonne()==8) {
 
 			
 		}
 		
-		if(hexa.ligne %2 == 0)
+		if(hexa.getLigne() %2 == 0)
 		{
 			for (i in 0...6){
 				switch (i) {
 					case 0 :
-							q= hexa.colonne -1;
-							r= hexa.ligne;
+							q= hexa.getColonne() -1;
+							r= hexa.getLigne();
 
 							if (q>=0) result.set("O", {x:q,y:r});
 
 					case 1 :
-							q= hexa.colonne -1;
-							r= hexa.ligne -1;
+							q= hexa.getColonne() -1;
+							r= hexa.getLigne() -1;
 							if (q>=0 && r>=0){
 							result.set("NO",{x:q, y:r});
 							}
 
 					case 2 :
-							q= hexa.colonne;
-							r= hexa.ligne -1;
+							q= hexa.getColonne();
+							r= hexa.getLigne() -1;
 							if (r>=0){
 							result.set("NE",{x:q, y:r});
 						};
 		
 					
 					case 3 :
-							q= hexa.colonne+1;
-							r= hexa.ligne;
+							q= hexa.getColonne()+1;
+							r= hexa.getLigne();
 							
 							if (q< Krissmoon.NUM_COLUMNS){
 							result.set("E",{x:q, y:r});
@@ -130,16 +130,16 @@ class Region {
 		
 					
 					case 4 :
-							q= hexa.colonne ;
-							r= hexa.ligne+1;
+							q= hexa.getColonne() ;
+							r= hexa.getLigne()+1;
 							if (r<Krissmoon.NUM_ROWS){
 							result.set("SE",{x:q, y:r});
 						}
 		
 					
 					case 5 :
-							q= hexa.colonne -1;
-							r= hexa.ligne +1;
+							q= hexa.getColonne() -1;
+							r= hexa.getLigne() +1;
 							if (q>=0 && r<Krissmoon.NUM_ROWS){
 							result.set("SO", {x:q, y:r});
 						}
@@ -151,46 +151,46 @@ class Region {
 			for (j in 0...6){
 				switch (j) {
 					case 0 :
-							q= hexa.colonne -1;
-							r= hexa.ligne;
+							q= hexa.getColonne() -1;
+							r= hexa.getLigne();
 							if (q>=0){
 							result.set("O",{x:q, y:r});
 						}
 		
 					case 1 :
-							q= hexa.colonne;
-							r= hexa.ligne-1;
+							q= hexa.getColonne();
+							r= hexa.getLigne()-1;
 							if (r>=0){
 							result.set("NO",{x:q, y:r});
 						}
 		
 					case 2 :
-							q= hexa.colonne+1;
-							r= hexa.ligne -1;
+							q= hexa.getColonne()+1;
+							r= hexa.getLigne() -1;
 							if (r>=0 && q<Krissmoon.NUM_COLUMNS){
 							result.set("NE",{x:q, y:r});
 						}
 		
 					
 					case 3 :
-							q= hexa.colonne +1;
-							r= hexa.ligne;
+							q= hexa.getColonne() +1;
+							r= hexa.getLigne();
 							if (q<Krissmoon.NUM_COLUMNS){
 							result.set("E",{x:q, y:r});
 						}
 		
 					
 					case 4 :
-							q= hexa.colonne+1;
-							r= hexa.ligne+1;
+							q= hexa.getColonne()+1;
+							r= hexa.getLigne()+1;
 							if (r<Krissmoon.NUM_ROWS && q< Krissmoon.NUM_COLUMNS){
 							result.set("SE",{x:q, y:r});
 						}
 		
 					
 					case 5 :
-							q= hexa.colonne;
-							r= hexa.ligne+1;
+							q= hexa.getColonne();
+							r= hexa.getLigne()+1;
 							if (r <Krissmoon.NUM_ROWS){
 							result.set("SO",{x:q, y:r});
 						}
@@ -267,7 +267,7 @@ class Region {
 		if(r[p.x][p.y].getFaction().getNom() == "Neutre")
 		r[p.x][p.y].changement_Faction(faction);
 		// #if js
-		// 	js.Lib.alert(orientation+"\n"+ p + "\n" + this.hexa.ligne +"/"+this.hexa.colonne);
+		// 	js.Lib.alert(orientation+"\n"+ p + "\n" + this.hexa.getLigne() +"/"+this.hexa.getColonne());
 		// #end
 		}
 
