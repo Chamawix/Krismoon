@@ -62,7 +62,7 @@ class Krissmoon extends Sprite {
 		else {
 			
 
-			for (i in 0...2){
+			for (i in 0...100){
 				for (faction in f)
 			 	{
 

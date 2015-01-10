@@ -293,6 +293,7 @@ class Region {
 
 	public function addUnite(n:Int):Void{
 		nbUnite+=n;
+		if(nbUnite > 100) nbUnite=30;
 		hexa.setText(""+nbUnite);
 	}
 	public function removeUnite(n:Int):Void{
