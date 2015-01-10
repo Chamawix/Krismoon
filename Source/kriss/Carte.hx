@@ -13,14 +13,18 @@ import openfl.display.Sprite;
 
 class Carte extends Sprite {
 
+	public static var factionNeutre = new Faction("Neutre", 0, 0, 0xAAAAAA, 0, 0);
+
+
 	private var columns: Int;
 	private var rows :Int;
-	private var factionNeutre = new Faction("Neutre", 0, 0, 0xAAAAAA);
 	private var regions = new Array <Array <Region>> ();
 	private var factions = new Array <Faction> ();
 	private var w:Float;
 	private var h: Float;
-	private static inline var radius = 20;
+
+
+	private static inline var radius = 25;
 
 	/*
 	* Constructeur, construit a partir d'une taille en pixel (height et width), et un ensemble
@@ -51,11 +55,11 @@ class Carte extends Sprite {
 
 	private function init(){
 
-		factions.push(new Faction("Mort-vivant", 9, 1, 0x111111));
-		factions.push(new Faction("Justicar", 5, 5, 0xDDDD22));
-		factions.push(new Faction("Bezergner", 8, 2, 0xCC4444));
-		factions.push(new Faction("Morticor", 3, 7, 0x1122BB));
-		factions.push(new Faction ("Envirald", 1, 9, 0x00AA00));
+		factions.push(new Faction("Mort-vivant", 9, 1, 0x111111, 0, 0));
+		factions.push(new Faction("Justicar", 5, 5, 0xDDDD22, 22, 20));
+		factions.push(new Faction("Bezergner", 8, 2, 0xCC4444, 16, 12));
+		factions.push(new Faction("Morticor", 3, 7, 0x1122BB, 5, 16));
+		factions.push(new Faction ("Envirald", 0, 10, 0x00AA00, 12, 11));
 
 		for (row in 0...rows) {
 			
@@ -123,18 +127,18 @@ class Carte extends Sprite {
 				var region:Region;
 				
 
-				if (i== 0 && j==0) {
+				if (i== factions[0].getCapitale().x && j==factions[0].getCapitale().y) {
 
-					region = new Region (hexa,factions[0]);
+					region = new Region (hexa,factions[0], true);
 				}
-				else if(i == 5 && j == 4)
-					region = new Region (hexa,factions[1]);
-				else if (i == 7 && j== 5)
-					region = new Region (hexa,factions[2]);
-				else if (i == 2 && j== 7)
-					region = new Region (hexa,factions[3]);
-				else if (i == 9 && j== 8)
-					region = new Region (hexa,factions[4]);
+				else if(i== factions[1].getCapitale().x && j==factions[1].getCapitale().y)
+					region = new Region (hexa,factions[1], true);
+				else if (i== factions[2].getCapitale().x && j==factions[2].getCapitale().y)
+					region = new Region (hexa,factions[2], true);
+				else if ((i== factions[3].getCapitale().x && j==factions[3].getCapitale().y))
+					region = new Region (hexa,factions[3], true);
+				else if ((i== factions[4].getCapitale().x && j==factions[4].getCapitale().y))
+					region = new Region (hexa,factions[4], true);
 				else{ 
 					region = new Region (hexa,factionNeutre);
 				}

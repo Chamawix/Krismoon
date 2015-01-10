@@ -3,6 +3,8 @@ package kriss;
 import flash.display.Sprite;
 import flash.Vector;
 
+import openfl.text.TextField;
+
 /*
 * Crée un objet graphique Case, dans lequel on va dessiner les hexagones, et les modifier
 */
@@ -18,6 +20,7 @@ class Case extends Sprite {
 	private var radius:Int;
 	private static inline var lineStyle = 0x000000;
 	private static inline var lineWidth = 1;
+	private var nbUnite: flash.text.TextField = new TextField();
 
 	/*
 	* Constructeur, a base de positions, et taille et de couleur. 
@@ -32,6 +35,18 @@ class Case extends Sprite {
 		couleur=color;
 		radius=rad;
 
+		nbUnite.x=posx - radius/4;
+		nbUnite.y=posy - radius/4;
+		nbUnite.textColor = 0xFFFEEE;
+
+		
+		nbUnite.appendText("0");
+		addChild(nbUnite);
+
+		//Ajoute des informations textuels sur chaque case :
+	
+
+
 	}
 	/*
 	* Fonction centrale qui permet de dessiner les hexagones. Elle remplit leur couleur, le style de ligne. 
@@ -41,6 +56,8 @@ class Case extends Sprite {
 	public function drawOneHexa():Void {
 		graphics.lineStyle(lineWidth, lineStyle);
 		graphics.beginFill(couleur);
+
+
 		
 		// #if js
 		// 	js.Lib.alert(couleur);
@@ -65,6 +82,8 @@ class Case extends Sprite {
 		    }
 
     	}
+
+		
 	}
 
 	/*
@@ -87,5 +106,11 @@ class Case extends Sprite {
 	}
 	public function getLigne():Int{ return ligne;}
 	public function getColonne():Int {return colonne;}
+	public function setText(s:String):Void {
+		//removeChild(nbUnite);
+
+		nbUnite.text= s;
+		//addChild(nbUnite);
+	}
 
 }

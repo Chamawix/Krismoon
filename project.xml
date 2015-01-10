@@ -8,7 +8,7 @@
 	<!-- <window width="640" height="400" background="#FFFFFF" fps="60"/> -->
 	
 	<window fps="60" background="#FFFFFF" />
-	<window width="640" height="400" if="html5" />
+	<window width="1200" height="1200" if="html5" />
 
 
 	<haxelib name="openfl" />
