@@ -279,7 +279,7 @@ class Region {
 	}
 
 	public function toString(): String {
-		var s = "{Ligne:"+hexa.getLigne()+";Colonne :"+hexa.getColonne()+"}\n";
+		var s = "{Ligne:"+hexa.getLigne()+";Colonne :"+ hexa.getColonne()+"}\n";
 		return s;
 	}
 

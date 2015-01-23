@@ -171,5 +171,4 @@ class Carte extends Sprite {
 	 	return rows;
 	 }
 
-
 }

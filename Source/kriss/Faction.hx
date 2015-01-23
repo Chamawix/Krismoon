@@ -15,6 +15,7 @@ class Faction{
 	private var puissanceDefense: Int;
 	private var capitaleLigne:Int;
 	private var capitaleColonne:Int;
+	private var factionXML:Xml;
 	/*
 	Ensemble de caracs a voir pour chaque faction:
 	? facteur d'extension (plus je suis loin, plus je suis efficace) offensif
@@ -36,6 +37,7 @@ class Faction{
 		this.couleur=couleur;
 		this.capitaleLigne=ligne;
 		this.capitaleColonne=colonne;
+		initXML();
 
 	}
 
@@ -177,4 +179,64 @@ class Faction{
 		}
 	}
 
+	private function isFrontiere(region : Region ):Bool {
+		if(frontiere.indexOf(region) == -1 ) return false;
+		else return true;
+	}
+
+	public function initXML():Void {
+		factionXML = Xml.createElement('' + nom);
+		factionXML.set("puissanceAttaque", ""+ puissanceAttaque);
+		factionXML.set("puissanceDefense", ""+ puissanceDefense);
+
+	 	var child = Xml.createElement('territoire'); 
+	 	factionXML.addChild(child);
+
+	}
+
+	// private function updateXMLFrontiere():Void{
+	// 	factionXML.removeChild(factionXML.elementsNamed('frontiere').next());
+
+	// 	var child:Xml = Xml.createElement('frontiere'); 
+
+	//  	for (i in frontiere){
+	//  		child = Xml.createElement(''+i.toString());
+	//  		child.set("NbUnite", ""+ i.getUnite());
+	//  		factionXML.addChild(child);
+	//  	}
+
+	//  	factionXML.addChild(child);
+	// }
+
+	private function updateXMLTerritoire():Void{
+		factionXML.removeChild(factionXML.elementsNamed("territoire").next());
+
+		var child:Xml = Xml.createElement('territoire'); 
+
+	 	for (i in territoire){
+	 		var childReg = Xml.createElement(''+i.toString());
+	 		childReg.set("NbUnite", ""+ i.getUnite());
+	 		childReg.set("isFrontiere", ""+ isFrontiere(i));
+	 		child.addChild(childReg);
+	 	}
+
+	 	factionXML.addChild(child);
+	}
+
+	public function updateXML():Xml {
+
+		updateXMLTerritoire();
+		//updateXMLFrontiere();
+
+	 	#if js 
+	 	//js.Lib.alert(factionXML);
+	 	#end
+
+	 	return factionXML;
+	 }
+
+
+	public function changeCapitale():Void{
+		
+	}
 }
